@@ -36,3 +36,5 @@ mcpmod.info
 fml_at.cfg
 fml_marker.cfg
 fmlversion.properties
+push.sh
+forge_at.cfg
