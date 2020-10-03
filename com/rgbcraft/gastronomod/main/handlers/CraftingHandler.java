@@ -73,13 +73,14 @@ public class CraftingHandler {
 		//pizza
 		GameRegistry.addRecipe(new ItemStack(Items.base_pizza, 1), new Object[] { "FSF", "FLF", "FBF", 'F', Items.farina_00, 'S', Items.sale, 'L', Items.lievito, 'B', Item.bucketWater});
 		GameRegistry.addRecipe(new ItemStack(Items.pizza_margherita_nc, 1), new Object[] { "PMP", "PBP", "PMP", 'B', Items.base_pizza, 'M', Items.mozzarella, 'P', Items.pomodoro});
-		GameRegistry.addRecipe(new ItemStack(Items.pizza_marinara_nc, 1), new Object[] { "PAP", "SBS", "PAP", 'B', Items.base_pizza, 'S', Items.basilico, 'A', Items.spicchio_aglio});
+		GameRegistry.addRecipe(new ItemStack(Items.pizza_marinara_nc, 1), new Object[] { "PAP", "SBS", "PAP", 'B', Items.base_pizza, 'S', Items.basilico, 'A', Items.spicchio_aglio, 'P', Items.pomodoro});
 		GameRegistry.addSmelting(Items.pizza_margherita_nc.itemID, new ItemStack(Items.pizza_margherita), 0.15f);
 		GameRegistry.addSmelting(Items.pizza_marinara_nc.itemID, new ItemStack(Items.pizza_marinara), 0.15f);
 		
 		//sugo
 		GameRegistry.addRecipe(new ItemStack(Items.pentolino_sugo, 1), new Object[] { "PPP", "CLB", "   ", 'P', Items.pomodoro, 'C', Item.carrot, 'L', Items.pentolino, 'B', Items.basilico});
 		GameRegistry.addSmelting(Items.pentolino_sugo.itemID, new ItemStack(Items.pentolino_sugo_cotto), 0.15f);
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.sugo_pomodoro), new Object[] { new ItemStack(Items.pentolino_sugo_cotto)});
 		
 		//pentolame
 		GameRegistry.addRecipe(new ItemStack(Items.pentolino, 1), new Object[] { "   ", "###", "## ", '#', Item.ingotIron});

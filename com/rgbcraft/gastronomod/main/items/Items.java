@@ -58,7 +58,7 @@ public class Items {
 		burro = new ItemFood(10001, 3, 1.5f, false).setPotionEffect(9, 60, 10, 100.0f).setIconIndex(176).setItemName("burro").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
 		sale = new Item(10002).setIconIndex(112).setItemName("sale").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
 		olio_oliva = new Item(10003).setIconIndex(113).setItemName("olio_oliva").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
-		sugo_pomodoro = new Item(10003).setIconIndex(114).setItemName("sugo_pomodoro").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+		sugo_pomodoro = new Item(10004).setIconIndex(114).setItemName("sugo_pomodoro").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
 		
 		//dolci
 		
