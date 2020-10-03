@@ -1,0 +1,198 @@
+package com.rgbcraft.gastronomod.main.items;
+
+import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
+
+public class Items {
+		
+	//pentolame
+	public static Item pentola, pentola_sporca, pentola_acqua, pentola_bollente, pentola_spaghetti;
+	public static Item pentolino, pentolino_sporco, pentolino_sugo, pentolino_sugo_cotto;
+	public static Item bottiglia;
+	
+	//piatti
+	public static Item piatto, piatto_sporco, piatto_spaghetti, piatto_spaghetti_aglio_olio, piatto_spaghetti_sugo;
+	public static Item barattolo, barattolo_sporco;
+	
+	
+	public static Item basilico, spicchio_aglio, aglio, prezzemolo, ariosto, pomodoro;
+	
+	//sughi
+	public static Item sugo_pomodoro;
+	
+	//grassi e condimenti
+	public static Item burro, olio_oliva, sale;
+
+	//pasta e riso
+	public static Item spaghetti, mozzarella, parmigiano, parmigiano_gratt;
+	
+	public static Item base_pizza, pizza_margherita, pizza_marinara, pizza_margherita_nc, pizza_marinara_nc;
+	
+	//farine
+	public static Item farina_int, farina_00, lievito, pane_nero, pane_nero_nc;
+	
+	//dolci
+	public static Item shortbread_nc, shortbread, nutella, tiramisu;
+	
+	public static Item bogusCibo;
+	
+
+	//texture file
+	
+	public static final String texture = "/com/rgbcraft/gastronomod/textures/items.png";
+		
+	public static void InizializzaItem() {
+		
+
+	//a_CentraleTermica = new Item(24301).setIconIndex(0).setItemName("a_CentraleTermica").setTextureFile("/com/rgbcraft/baumod/textures/cartelli.png").setCreativeTab(CreativeTabs.tabDecorations);
+	// new ItemFood (ID, mezziCosciotti, saturation, preferito_dai_lupi)
+	//ProtoFood = new ItemFood(25100, 1, 0.5f, false).setItemName("ProtoFood").setCreativeTab(CreativeTabs.tabFood);
+		
+		bogusCibo = new ItemFood(10000, 1, 1.5f, false).setAlwaysEdible().setPotionEffect(17, 2, 255, 100.0f).setItemName("bogusCibo").setCreativeTab(CreativeTabs.tabBrewing);
+		
+		//grassi e condimenti
+		burro = new ItemFood(10001, 3, 1.5f, false).setPotionEffect(9, 60, 10, 100.0f).setIconIndex(176).setItemName("burro").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+		sale = new Item(10002).setIconIndex(112).setItemName("sale").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+		olio_oliva = new Item(10003).setIconIndex(113).setItemName("olio_oliva").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+		sugo_pomodoro = new Item(10003).setIconIndex(114).setItemName("sugo_pomodoro").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+		
+		//dolci
+		
+		
+		//farine
+		farina_int = new Item(10010).setIconIndex(145).setItemName("farina_int").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+		farina_00 = new Item(10011).setIconIndex(144).setItemName("farina_00").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+		lievito = new Item(10012).setIconIndex(146).setItemName("lievito").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+		
+		spaghetti = new Item(10020).setIconIndex(160).setItemName("spaghetti").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+		pane_nero_nc = new Item(10021).setItemName("pane_nero_nc").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setIconIndex(54);
+		pane_nero = new ItemFood(10022, 6, 1.5f, true).setPotionEffect(5, 180, 5, 100.0f).setItemName("pane_nero").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setIconIndex(55);
+		
+		//dolci
+			
+		nutella = new ItemBarattolo(10030, 20).setPotionEffect(20, 5, 3, 100.0f).setIconIndex(128).setTextureFile(texture).setItemName("nutella").setCreativeTab(CreativeTabs.tabFood);
+		shortbread_nc = new Item(10031).setIconIndex(129).setItemName("shortbread_nc").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+		shortbread = new ItemFood(10032, 2, 1.0f, false).setIconIndex(131).setItemName("shortbread").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+	    tiramisu = new ItemFood(10033, 4, 1.0f, false).setIconIndex(130).setItemName("tiramisu").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+	    
+		//piatti, barattori, pentole, pentolini vuoti
+		pentola = new Item(10040).setItemName("pentola").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(0);
+		pentola_sporca = new Item(10041).setItemName("pentola_sporca").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(1);
+		pentolino = new Item(10042).setItemName("pentolino").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(2);
+		pentolino_sporco = new Item(10043).setItemName("pentolino_sporco").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(3);
+	    piatto = new Item(10044).setItemName("piatto_vuoto").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(4);
+	    piatto_sporco = new Item(10045).setItemName("piatto_sporco").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(5);
+	    barattolo = new Item(10046).setItemName("barattolo").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(6);
+	    barattolo_sporco = new Item(10047).setItemName("barattolo_sporco").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(7);
+	    bottiglia = new Item(10048).setItemName("bottiglia").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(8);
+		
+	    mozzarella = new ItemFood(10050, 6, 1.0f, false).setItemName("mozzarella").setIconIndex(179).setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture);
+	    parmigiano = new ItemFood(10051, 4, 1.0f, false).setItemName("parmigiano").setIconIndex(177).setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture);
+	    parmigiano_gratt = new Item(10052).setItemName("parmigiano_gratt").setIconIndex(178).setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture);
+	    
+	    //pentole con roba da cuocere
+	    pentola_acqua = new Item(10060).setItemName("pentola_acqua").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(64).setContainerItem(pentola);
+	    pentola_bollente = new Item(10061).setItemName("pentola_bollente").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(65).setContainerItem(pentola);
+	    pentola_spaghetti = new Item(10062).setItemName("pentola_spaghetti").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(66).setContainerItem(pentola);
+	    pentolino_sugo = new Item(10063).setItemName("pentolino_sugo").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(49).setContainerItem(pentolino);
+	    pentolino_sugo_cotto = new Item(10064).setItemName("pentolino_sugo_cotto").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(53).setContainerItem(pentolino);
+	    
+	    //prodotti semilavorati
+	    base_pizza = new Item(10070).setItemName("base_pizza").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(48);
+	    spicchio_aglio = new ItemFood(10071, 1, 0.5f, false).setItemName("spicchio_aglio").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(50);
+	    
+	    pizza_margherita_nc = new Item(10072).setCreativeTab(CreativeTabs.tabFood).setItemName("pizza_margherita_nc").setTextureFile(texture).setIconIndex(51);
+	    pizza_marinara_nc = new Item(10073).setCreativeTab(CreativeTabs.tabFood).setItemName("pizza_marinara_nc").setTextureFile(texture).setIconIndex(52);
+	    
+	    //piatti finiti
+	    pizza_margherita = new ItemFood(10080, 16, 1.5f, false).setCreativeTab(CreativeTabs.tabFood).setItemName("pizza_margherita").setTextureFile(texture).setIconIndex(16);
+	    pizza_marinara = new ItemFood(10081, 12, 1.5f, false).setCreativeTab(CreativeTabs.tabFood).setItemName("pizza_marinara").setTextureFile(texture).setIconIndex(17);
+	    
+	    
+		//piatti finiti (il piatto viene restituito)
+	    piatto_spaghetti = new ItemPiatto(10082, 3).setItemName("piatto_spaghetti").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(18);
+	    piatto_spaghetti_sugo = new ItemPiatto(10083, 10).setItemName("piatto_spaghetti_sugo").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(19);
+	    piatto_spaghetti_aglio_olio = new ItemPiatto(10084, 9).setItemName("piatto_spaghetti_aglio_olio").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(20);
+	    
+	    //verdura, frutta
+	    aglio = new Item(10090).setItemName("aglio").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(80);
+	    basilico = new Item(10091).setItemName("basilico").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(81);
+	    prezzemolo = new Item(10092).setItemName("prezzemolo").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(82);
+	    pomodoro = new ItemFood(10093, 5, 1.5f, false).setItemName("pomodoro").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(83);
+	    ariosto = new Item(10094).setItemName("ariosto").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(84);
+	}
+	
+	
+	 
+	
+	
+	public static void RegistraLingua() {
+	
+		
+		LanguageRegistry.addName(pentola, "Pentola");
+		LanguageRegistry.addName(pentola_sporca, "Pentola sporca");
+		LanguageRegistry.addName(pentolino, "Pentolino");
+		LanguageRegistry.addName(pentolino_sporco, "Pentolino sporco");
+		LanguageRegistry.addName(piatto, "Piatto");
+		LanguageRegistry.addName(piatto_sporco, "Piatto sporco");
+		LanguageRegistry.addName(barattolo, "Barattolo");
+		LanguageRegistry.addName(barattolo_sporco, "Barattolo sporco");
+		LanguageRegistry.addName(bottiglia, "Bottiglia");
+		
+		LanguageRegistry.addName(pizza_margherita, "Pizza margherita");
+		LanguageRegistry.addName(pizza_marinara, "Pizza marinara");
+		
+		LanguageRegistry.addName(pizza_margherita_nc, "Pizza margherita (cruda)");
+		LanguageRegistry.addName(pizza_marinara_nc, "Pizza marinara (cruda)");
+		
+		LanguageRegistry.addName(piatto_spaghetti, "Spaghetti in bianco");
+		LanguageRegistry.addName(piatto_spaghetti_sugo, "Spaghetti al pomodoro");
+		LanguageRegistry.addName(piatto_spaghetti_aglio_olio, "Spaghetti aglio e olio");
+		
+		LanguageRegistry.addName(base_pizza, "Base per pizza");
+		LanguageRegistry.addName(pentolino_sugo, "Pentolino con sugo di pomodoro");
+		LanguageRegistry.addName(pentolino_sugo_cotto, "Pentolino con sugo di pomodoro cotto");
+		LanguageRegistry.addName(spicchio_aglio, "Spicchio d'aglio");
+		
+		LanguageRegistry.addName(pentola_acqua, "Pentola con acqua");
+		LanguageRegistry.addName(pentola_bollente, "Pentola con acqua bollente");
+		LanguageRegistry.addName(pentola_spaghetti, "Pentola con acqua bollente e spaghetti");
+		
+		LanguageRegistry.addName(aglio, "Aglio");
+		LanguageRegistry.addName(basilico, "Basilico");
+		LanguageRegistry.addName(prezzemolo, "Prezzemolo");
+		LanguageRegistry.addName(pomodoro, "Pomodoro");
+		LanguageRegistry.addName(ariosto, "Spezie");
+		
+		LanguageRegistry.addName(sale, "Sale");
+		LanguageRegistry.addName(olio_oliva, "Olio d'oliva");
+		LanguageRegistry.addName(sugo_pomodoro, "Sugo di pomodoro");
+		
+		LanguageRegistry.addName(nutella, "Nutella®");
+		LanguageRegistry.addName(shortbread_nc, "Shortbread crudi");
+		LanguageRegistry.addName(shortbread, "Shortbread (Scozia)");
+		
+		LanguageRegistry.addName(tiramisu, "Tiramisù");
+		
+		LanguageRegistry.addName(farina_00, "Farina 00");
+		LanguageRegistry.addName(farina_int, "Farina integrale");
+		
+		LanguageRegistry.addName(lievito, "Lievito fresco");
+		
+		LanguageRegistry.addName(spaghetti, "Spaghetti");
+		LanguageRegistry.addName(pane_nero_nc, "Pane nero crudo");
+		LanguageRegistry.addName(pane_nero, "Pane nero (Alto Adige)");
+		
+		
+		LanguageRegistry.addName(burro, "Burro");
+		LanguageRegistry.addName(parmigiano, "Parmigiano");
+		LanguageRegistry.addName(parmigiano_gratt, "Parmigiano grattuggiato");
+		LanguageRegistry.addName(mozzarella, "Mozzarella");
+				
+	}
+}
+
