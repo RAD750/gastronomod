@@ -91,7 +91,7 @@ public class CraftingHandler {
 		
 		//cocacola
 		
-		GameRegistry.addRecipe(new ItemStack(Items.cocacola, 1), new Object[] {"WCW", "WZW", "WBA", 'A', new ItemStack(Item.dyePowder, 1, 3), 'W', Item.bucketWater, 'Z', Item.sugar, 'C', ic2.api.Items.getItem("scrap")}, 'B', Items.bottiglia );
+		GameRegistry.addRecipe(new ItemStack(Items.cocacola, 1), new Object[] {"WCW", "WZW", "WBA", 'A', new ItemStack(Item.dyePowder, 1, 3), 'W', Item.bucketWater, 'Z', Item.sugar, 'C', ic2.api.Items.getItem("scrap"), 'B', Items.bottiglia });
 		
 				
 }
