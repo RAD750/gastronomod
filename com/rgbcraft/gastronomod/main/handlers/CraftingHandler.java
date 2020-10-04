@@ -89,7 +89,8 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(Items.barattolo, 1), new Object[] { " X ", "# #", "###", '#', Block.glass, 'X', Block.planks});
 		GameRegistry.addRecipe(new ItemStack(Items.bottiglia, 1), new Object[] { " X ", " # ", " # ", '#', Block.glass, 'X', Block.planks});
 		
-
+		//vuota tutto
 		
+				
 }
 	}
