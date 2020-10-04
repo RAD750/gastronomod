@@ -23,4 +23,10 @@ public class ItemBottigliaCocaCola extends ItemFood {
     {
         return EnumAction.drink;
     }
+    
+	public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+    {
+        super.onFoodEaten(par1ItemStack, par2World, par3EntityPlayer);
+        return new ItemStack(Items.bottiglia);
+    }
 }

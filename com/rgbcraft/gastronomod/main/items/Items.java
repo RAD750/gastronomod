@@ -129,7 +129,7 @@ public class Items {
 		olio_oliva = new Item(10003).setIconIndex(113).setItemName("olio_oliva").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setContainerItem(Items.barattolo_sporco);
 		sugo_pomodoro = new Item(10004).setIconIndex(114).setItemName("sugo_pomodoro").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setContainerItem(Items.barattolo_sporco);
 		
-		cocacola = new ItemBottigliaCocaCola(10005, 3, 1.5f, false).setPotionEffect(9, 60, 10, 100.0f).setIconIndex(192).setItemName("cocacola").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setContainerItem(Items.bottiglia);
+		cocacola = new ItemBottigliaCocaCola(10005, 3, 1.5f, false).setPotionEffect(3, 60, 10, 100.0f).setIconIndex(192).setItemName("cocacola").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setContainerItem(Items.bottiglia);
 		
 	}
 	
@@ -139,6 +139,7 @@ public class Items {
 	
 	public static void RegistraLingua() {
 	
+		LanguageRegistry.addName(bogusCibo, "Hai trovato un bug grave se hai ottenuto legittimamente questo item. Segnala a lego11.");
 		
 		LanguageRegistry.addName(pentola, "Pentola");
 		LanguageRegistry.addName(pentola_sporca, "Pentola sporca");
