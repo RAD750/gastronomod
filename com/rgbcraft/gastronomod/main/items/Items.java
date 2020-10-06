@@ -93,10 +93,10 @@ public class Items {
 	    parmigiano_gratt = new Item(10052).setItemName("parmigiano_gratt").setIconIndex(178).setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setMaxStackSize(32);
 	    
 	    //pentole con roba da cuocere
-	    pentola_acqua = new Item(10060).setItemName("pentola_acqua").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(64).setContainerItem(pentola).setMaxStackSize(1);
-	    pentola_bollente = new Item(10061).setItemName("pentola_bollente").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(65).setContainerItem(pentola).setMaxStackSize(1);
+	    pentola_acqua = new Item(10060).setItemName("pentola_acqua").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(64).setMaxStackSize(1);
+	    pentola_bollente = new Item(10061).setItemName("pentola_bollente").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(65).setMaxStackSize(1);
 	    pentola_spaghetti = new Item(10062).setItemName("pentola_spaghetti").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(66).setContainerItem(pentola).setMaxStackSize(1);
-	    pentolino_sugo = new Item(10063).setItemName("pentolino_sugo").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(49).setContainerItem(pentolino).setMaxStackSize(1);
+	    pentolino_sugo = new Item(10063).setItemName("pentolino_sugo").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(49).setMaxStackSize(1);
 	    pentolino_sugo_cotto = new Item(10064).setItemName("pentolino_sugo_cotto").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(53).setContainerItem(pentolino).setMaxStackSize(1);
 	    
 	    //prodotti semilavorati

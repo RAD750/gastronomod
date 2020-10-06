@@ -80,7 +80,7 @@ public class CraftingHandler {
 		//sugo
 		GameRegistry.addRecipe(new ItemStack(Items.pentolino_sugo, 1), new Object[] { "PPP", "CLB", "   ", 'P', Items.pomodoro, 'C', Item.carrot, 'L', Items.pentolino, 'B', Items.basilico});
 		GameRegistry.addSmelting(Items.pentolino_sugo.itemID, new ItemStack(Items.pentolino_sugo_cotto), 0.15f);
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.sugo_pomodoro), new Object[] { new ItemStack(Items.pentolino_sugo_cotto)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.sugo_pomodoro), new Object[] { new ItemStack(Items.pentolino_sugo_cotto), new ItemStack(Items.barattolo)});
 		
 		//pentolame
 		GameRegistry.addRecipe(new ItemStack(Items.pentolino, 1), new Object[] { "   ", "###", "## ", '#', Item.ingotIron});
