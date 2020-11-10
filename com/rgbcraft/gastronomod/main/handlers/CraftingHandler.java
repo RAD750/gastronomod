@@ -26,6 +26,31 @@ public class CraftingHandler {
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.barattolo), new Object[] {new ItemStack(Items.barattolo_sporco), new ItemStack(Item.bucketWater)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.piatto), new Object[] {new ItemStack(Items.piatto_sporco), new ItemStack(Item.bucketWater)});
 		
+		
+		
+		//GELATO
+		
+		GameRegistry.addShapedRecipe(new ItemStack(Items.vaschettaVuota), new Object[] { "   ", "# #", "###", '#', Item.paper});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.gelatoCostoso), new Object[] { "#M#", "#M#", " # ", '#', Item.netherStar, 'M', Item.bucketMilk});
+		ic2.api.Ic2Recipes.addCompressorRecipe(new ItemStack(Items.gelatoCostoso), new ItemStack(Items.conoCostoso));
+		ic2.api.Ic2Recipes.addCompressorRecipe(new ItemStack(Item.bucketMilk), new ItemStack(Items.gelatoBase));
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoCioccolato), new Object[] {new ItemStack(Items.gelatoBase), new ItemStack(Items.cioccolato)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoStracciatella), new Object[] {new ItemStack(Item.bucketMilk), new ItemStack(Items.gelatoBase), new ItemStack(Items.cioccolato)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoFiordilatte), new Object[] {new ItemStack(Item.bucketMilk), new ItemStack(Items.gelatoBase)});
+		
+		ic2.api.Ic2Recipes.addCompressorRecipe(new ItemStack(Items.gelatoCioccolato), new ItemStack(Items.conoCioccolato));
+		ic2.api.Ic2Recipes.addCompressorRecipe(new ItemStack(Items.gelatoStracciatella), new ItemStack(Items.conoStracciatella));
+		ic2.api.Ic2Recipes.addCompressorRecipe(new ItemStack(Items.gelatoFiordilatte), new ItemStack(Items.conoFiordilatte));
+
+		
+		ic2.api.Ic2Recipes.addMaceratorRecipe(new ItemStack(Item.dyePowder, 1, 3), new ItemStack(Items.cacaoTritato));
+		GameRegistry.addSmelting(Items.cacaoTritato.itemID, new ItemStack(Items.cioccolato), 0.15f);
+		
+		
+		//MARIA
+		GameRegistry.addRecipe(new ItemStack(Items.indicaCannone, 1), new Object[] { "###", "#F#", "###", '#', Item.paper, 'F', Items.indicaFoglia});
+		GameRegistry.addRecipe(new ItemStack(Items.sativaCannone, 1), new Object[] { "###", "#F#", "###", '#', Item.paper, 'F', Items.sativaFoglia});
+		
 		//Aglio
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.spicchio_aglio, 4), new ItemStack(Items.aglio));
@@ -41,7 +66,6 @@ public class CraftingHandler {
 		//farine
 		ic2.api.Ic2Recipes.addExtractorRecipe(new ItemStack(Item.wheat), new ItemStack(Items.farina_int));
 		ic2.api.Ic2Recipes.addMaceratorRecipe(new ItemStack(Items.farina_int), new ItemStack(Items.farina_00));
-		ic2.api.Ic2Recipes.addMaceratorRecipe(new ItemStack(Item.wheat), new ItemStack(Item.axeDiamond));
 		
 		//lieviti
 		GameRegistry.addRecipe(new ItemStack(Items.lievito, 4), new Object[] { "#B#", "#S#", "###", '#', Item.wheat, 'B', Item.bucketWater, 'S', Item.sugar});

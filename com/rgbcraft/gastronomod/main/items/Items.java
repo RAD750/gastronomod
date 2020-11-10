@@ -4,6 +4,13 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemSeeds;
+
+import com.rgbcraft.gastronomod.main.agri.BlockPomodoro;
+import com.rgbcraft.gastronomod.main.items.roba.ItemIndica;
+import com.rgbcraft.gastronomod.main.items.roba.ItemSativa;
+import com.rgbcraft.gastronomod.main.agri.AgriBlocks;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -18,7 +25,7 @@ public class Items {
 	public static Item piatto, piatto_sporco, piatto_spaghetti, piatto_spaghetti_aglio_olio, piatto_spaghetti_sugo;
 	public static Item barattolo, barattolo_sporco;
 	
-	
+	public static Item basilicoSemi, aglioSemi, prezzemoloSemi, pomodoroSemi;
 	public static Item basilico, spicchio_aglio, aglio, prezzemolo, ariosto, pomodoro;
 	
 	//sughi
@@ -36,16 +43,23 @@ public class Items {
 	public static Item farina_int, farina_00, lievito, pane_nero, pane_nero_nc;
 	
 	//dolci
-	public static Item shortbread_nc, shortbread, nutella, tiramisu;
+	public static Item shortbread_nc, shortbread, nutella, tiramisu, gelatoBase, cioccolato;
 	
 	public static Item bogusCibo;
 	
 	public static Item cocacola;
 	
+	public static Item conoVuoto, conoCioccolato, conoPistacchio, conoStracciatella, conoFiordilatte, conoCostoso;
+	public static Item vaschettaVuota, gelatoCioccolato, gelatoPistacchio, gelatoStracciatella, gelatoFiordilatte, gelatoCostoso, cacaoTritato;
+	
+	//MARIA
+	public static Item sativaSemi, sativaFoglia, indicaSemi, indicaFoglia;
+	public static Item sativaCannone, indicaCannone;
 
 	//texture file
 	
 	public static final String texture = "/com/rgbcraft/gastronomod/textures/items.png";
+	public static final String textureAgri = "/com/rgbcraft/gastronomod/textures/agri.png";
 		
 	public static void InizializzaItem() {
 		
@@ -70,12 +84,22 @@ public class Items {
 		pane_nero_nc = new Item(10021).setItemName("pane_nero_nc").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setIconIndex(54).setMaxStackSize(16);
 		pane_nero = new ItemFood(10022, 6, 1.5f, true).setPotionEffect(5, 180, 5, 100.0f).setItemName("pane_nero").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setIconIndex(55).setMaxStackSize(16);
 		
+		
 		//dolci
 			
 		nutella = new ItemBarattolo(10030, 20).setPotionEffect(20, 5, 3, 100.0f).setIconIndex(128).setTextureFile(texture).setItemName("nutella").setCreativeTab(CreativeTabs.tabFood);
 		shortbread_nc = new Item(10031).setIconIndex(129).setItemName("shortbread_nc").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(24);
 		shortbread = new ItemFood(10032, 2, 1.0f, false).setIconIndex(131).setItemName("shortbread").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(24);
 	    tiramisu = new ItemFood(10033, 4, 1.0f, false).setIconIndex(130).setItemName("tiramisu").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setMaxStackSize(1);
+	    cioccolato = new ItemFood(10039, 6, 1.5f, true).setPotionEffect(5, 180, 5, 100.0f).setItemName("cioccolato").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setIconIndex(132).setMaxStackSize(16);
+	    cacaoTritato = new Item(10013).setIconIndex(133).setItemName("cacaoTriato").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood);
+	    
+	    conoVuoto = new Item(10140).setIconIndex(224).setItemName("conoVuoto").setTextureFile(texture).setCreativeTab(CreativeTabs.tabMisc);
+	    conoCioccolato = new ItemFood(10034, 4, 1.5f, true).setAlwaysEdible().setPotionEffect(5, 120, 5, 90.0f).setItemName("conoCioccolato").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setIconIndex(225).setMaxStackSize(3);
+	    //conoPistacchio = new ItemFood(10035, 4, 1.5f, true).setAlwaysEdible().setPotionEffect(5, 120, 5, 90.0f).setItemName("conoPistacchio").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setIconIndex(226).setMaxStackSize(3);
+	    conoStracciatella = new ItemFood(10036, 4, 1.5f, true).setAlwaysEdible().setPotionEffect(5, 120, 5, 90.0f).setItemName("conoStracciatella").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setIconIndex(227).setMaxStackSize(3);
+	    conoFiordilatte = new ItemFood(10037, 4, 1.5f, true).setAlwaysEdible().setPotionEffect(5, 120, 5, 90.0f).setItemName("conoFiordilatte").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setIconIndex(228).setMaxStackSize(3);
+	    conoCostoso = new ItemFood(10038, 6, 1.5f, true).setAlwaysEdible().setPotionEffect(5, 1000, 5, 100.0f).setItemName("conoCostoso").setTextureFile(texture).setCreativeTab(CreativeTabs.tabFood).setIconIndex(229).setMaxStackSize(3);
 	    
 		//piatti, barattori, pentole, pentolini vuoti
 		pentola = new Item(10040).setItemName("pentola").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(0).setMaxStackSize(4);
@@ -116,10 +140,35 @@ public class Items {
 	    piatto_spaghetti_sugo = new ItemPiatto(10083, 10).setItemName("piatto_spaghetti_sugo").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(19);
 	    piatto_spaghetti_aglio_olio = new ItemPiatto(10084, 9).setItemName("piatto_spaghetti_aglio_olio").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(20);
 	    
+	    pomodoroSemi = new ItemSeeds(10100, AgriBlocks.BlockPomodoro.blockID, Block.tilledField.blockID).setIconIndex(20).setItemName("itemPomodoroSeeds").setCreativeTab(CreativeTabs.tabFood).setTextureFile(textureAgri);
+	    basilicoSemi = new ItemSeeds(10101, AgriBlocks.BlockBasilico.blockID, Block.tilledField.blockID).setIconIndex(4).setItemName("itemBasilicoSeeds").setCreativeTab(CreativeTabs.tabFood).setTextureFile(textureAgri);
+	    prezzemoloSemi = new ItemSeeds(10102, AgriBlocks.BlockPrezzemolo.blockID, Block.tilledField.blockID).setIconIndex(84).setItemName("itemPrezzemoloSeeds").setCreativeTab(CreativeTabs.tabFood).setTextureFile(textureAgri);
+
+	    //MARIA GIOVANNA
+	    
+	    indicaSemi = new ItemSeeds(10110, AgriBlocks.BlockIndica.blockID, Block.tilledField.blockID).setIconIndex(36).setItemName("indicaSemi").setCreativeTab(CreativeTabs.tabBrewing).setTextureFile(textureAgri);
+	    sativaSemi = new ItemSeeds(10111, AgriBlocks.BlockSativa.blockID, Block.tilledField.blockID).setIconIndex(52).setItemName("sativaSemi").setCreativeTab(CreativeTabs.tabBrewing).setTextureFile(textureAgri);
+	    
+	    indicaFoglia = new Item(10115).setItemName("indicaFoglia").setCreativeTab(CreativeTabs.tabBrewing).setTextureFile(texture).setIconIndex(209);
+	    sativaFoglia = new Item(10116).setItemName("sativaFoglia").setCreativeTab(CreativeTabs.tabBrewing).setTextureFile(texture).setIconIndex(210);
+	    
+	    indicaCannone = new ItemIndica(10120, 1).setItemName("indicaCannone");
+	    sativaCannone = new ItemSativa(10121, 1).setItemName("sativaCannone");
+	    
+	    //GELATI
+	    vaschettaVuota = new Item(10130).setItemName("vaschettaVuota").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(9);
+	    gelatoBase = new Item(10131).setItemName("gelatoBase").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(240);
+	    gelatoCioccolato = new Item(10132).setItemName("gelatoCioccolato").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(241);
+	    //gelatoPistacchio = new Item(10133).setItemName("gelatoPistacchio").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(242);
+	    gelatoStracciatella= new Item(10134).setItemName("gelatoStracciatella").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(243);
+	    gelatoFiordilatte= new Item(10135).setItemName("gelatoFiordilatte").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(244);
+	    gelatoCostoso= new Item(10136).setItemName("gelatoFiordilatte").setCreativeTab(CreativeTabs.tabMisc).setTextureFile(texture).setIconIndex(245);
+	    
+	    
 	    //verdura, frutta
-	    aglio = new Item(10090).setItemName("aglio").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(80);
+	    aglio = new ItemSeeds(10090, AgriBlocks.BlockAglio.blockID, Block.tilledField.blockID).setItemName("aglio").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(80);
 	    basilico = new Item(10091).setItemName("basilico").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(81);
-	    prezzemolo = new Item(10092).setItemName("prezzemolo").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(82);
+	    prezzemolo = new Item(10092).setItemName("prezzemolo").setCreativeTab(CreativeTabs.tabFood).setTextureFile(textureAgri).setIconIndex(85);
 	    pomodoro = new ItemFood(10093, 5, 1.5f, false).setItemName("pomodoro").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(83);
 	    ariosto = new Item(10094).setItemName("ariosto").setCreativeTab(CreativeTabs.tabFood).setTextureFile(texture).setIconIndex(84);
 	    
@@ -185,6 +234,24 @@ public class Items {
 		LanguageRegistry.addName(shortbread, "Shortbread (Scozia)");
 		
 		LanguageRegistry.addName(tiramisu, "Tiramisù");
+		LanguageRegistry.addName(cacaoTritato, "Polvere di cacao");
+		
+		LanguageRegistry.addName(conoVuoto, "Cono gelato");
+		LanguageRegistry.addName(conoCioccolato, "Cono gelato cioccolato");
+		//LanguageRegistry.addName(conoPistacchio, "Cono gelato pistacchio");
+		LanguageRegistry.addName(conoStracciatella, "Cono gelato stracciatella");
+		LanguageRegistry.addName(conoFiordilatte, "Cono gelato fiordilatte");
+		LanguageRegistry.addName(conoCostoso, "Cono gelato per ricchi sfondati");
+		
+		LanguageRegistry.addName(cioccolato, "Cioccolato");
+		
+		LanguageRegistry.addName(vaschettaVuota, "Vaschetta vuota");
+		LanguageRegistry.addName(gelatoBase, "Base per gelato");
+		LanguageRegistry.addName(gelatoCioccolato, "Gelato cioccolato");
+		//LanguageRegistry.addName(gelatoPistacchio, "Gelato pistacchio");
+		LanguageRegistry.addName(gelatoStracciatella, "Gelato stracciatella");
+		LanguageRegistry.addName(gelatoFiordilatte, "Gelato fiordilatte");
+		LanguageRegistry.addName(gelatoCostoso, "Gelato per ricchi sfondati");
 		
 		LanguageRegistry.addName(farina_00, "Farina 00");
 		LanguageRegistry.addName(farina_int, "Farina integrale");
@@ -203,6 +270,18 @@ public class Items {
 		
 		LanguageRegistry.addName(cocacola, "Coca-Cola®");
 				
+		LanguageRegistry.addName(pomodoroSemi, "Semi di pomodoro");
+		LanguageRegistry.addName(basilicoSemi, "Semi di basilico");
+		LanguageRegistry.addName(prezzemoloSemi, "Semi di prezzemolo");
+		
+		LanguageRegistry.addName(indicaSemi, "Semi d'indica");
+		LanguageRegistry.addName(sativaSemi, "Semi di sativa");
+		LanguageRegistry.addName(indicaFoglia, "Foglia d'indica");
+		LanguageRegistry.addName(sativaFoglia, "Foglia di sativa");
+		LanguageRegistry.addName(indicaCannone, "Cannone Indica");
+		LanguageRegistry.addName(sativaCannone, "Cannone Sativa");
+		
+		
 	}
 }
 
