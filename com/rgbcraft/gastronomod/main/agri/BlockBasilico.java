@@ -7,7 +7,7 @@ public class BlockBasilico extends BlockCrops {
 
     protected BlockBasilico(int id, int textId) {
         super(id, textId);
-        setBlockName("blockPomodoro");
+        setBlockName("blockBasilico");
     }
     
     public int getBlockTextureFromSideAndMetadata(int side, int metadata) {

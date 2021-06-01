@@ -1,4 +1,6 @@
 package com.rgbcraft.gastronomod.main.items;
+import com.rgbcraft.gastronomod.main.CreativeTab;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
@@ -14,7 +16,8 @@ public class ItemPiatto extends ItemFood
         this.setMaxStackSize(1);
         this.setIconIndex(5);
         this.setTextureFile("/com/rgbcraft/gastronomod/textures/items.png");
-        this.setCreativeTab(CreativeTabs.tabMisc);
+        this.setCreativeTab(CreativeTab.tabGastronomodCibi);
+        this.setContainerItem(Items.piatto_sporco);
     }
 
 	public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)

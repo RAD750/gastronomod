@@ -3,11 +3,11 @@ import com.rgbcraft.gastronomod.main.items.Items;
 
 import net.minecraft.block.BlockCrops;
 
-public class BlockSativa extends BlockCrops {
+public class BlockRiso extends BlockCrops {
 
-    protected BlockSativa(int id, int textId) {
+    protected BlockRiso(int id, int textId) {
         super(id, textId);
-        setBlockName("blockSativa");
+        setBlockName("blockRiso");
     }
     
     public int getBlockTextureFromSideAndMetadata(int side, int metadata) {
@@ -23,10 +23,10 @@ public class BlockSativa extends BlockCrops {
     }
 
     protected int getSeedItem() {
-        return Items.sativaSemi.itemID;
+        return Items.riso.itemID;
     }
 
     protected int getCropItem() {
-        return Items.sativaFoglia.itemID;
+        return Items.riso.itemID;
     }
 }

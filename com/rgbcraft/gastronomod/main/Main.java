@@ -1,6 +1,7 @@
 package com.rgbcraft.gastronomod.main;
 
 import com.rgbcraft.gastronomod.main.agri.AgriBlocks;
+import com.rgbcraft.gastronomod.main.arbori.ArboriBlocks;
 import com.rgbcraft.gastronomod.main.handlers.CraftingHandler;
 import com.rgbcraft.gastronomod.main.handlers.GrassHandler;
 import com.rgbcraft.gastronomod.main.items.Items;
@@ -24,7 +25,7 @@ import net.minecraft.src.BaseMod;
 import net.minecraftforge.common.MinecraftForge;
 
 
-@Mod(name="Gastronomod", version="1.2", modid="gastronomod")
+@Mod(name="Gastronomod", version="1.7", modid="gastronomod")
 public class Main extends BaseMod{
 
 	//proxy per prerendering
@@ -33,7 +34,7 @@ public class Main extends BaseMod{
 	
 	@Override
 	public String getVersion() {
-		return "1.2";
+		return "1.7";
 	}
 
 	@Override
@@ -55,13 +56,17 @@ public class Main extends BaseMod{
 		AgriBlocks.RegistraLinguaAgri();
 		Items.InizializzaItem();
 		Items.RegistraLingua();
-		CraftingHandler.AggiungiCrafting();
+		
 		GrassHandler.InitGrassHandler();
+		/*ArboriBlocks.InizializzaArbori();
+		ArboriBlocks.RegistraArbori();*/
+		
 	}
 	
 	@PostInit
 	public void postInit(FMLPostInitializationEvent event) {
 		//proxy per modelli techne
+		CraftingHandler.AggiungiCrafting();
 	    proxy.postInit(event);
 	}
 	

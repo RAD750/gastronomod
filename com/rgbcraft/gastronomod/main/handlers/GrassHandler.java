@@ -12,5 +12,7 @@ public class GrassHandler {
 		MinecraftForge.addGrassSeed(new ItemStack(Items.basilicoSemi), 7);
 		MinecraftForge.addGrassSeed(new ItemStack(Items.prezzemoloSemi), 7);
 		MinecraftForge.addGrassSeed(new ItemStack(Items.aglio), 4);
+		MinecraftForge.addGrassSeed(new ItemStack(Items.riso), 7);
+		MinecraftForge.addGrassSeed(new ItemStack(Items.carciofoSemi), 5);
 	}
 }
