@@ -153,6 +153,23 @@ public class CraftingHandler {
 		ItemStack carbonFibre = ic2.api.Items.getItem("carbonFiber").copy();
 		ItemStack carbonPlate = ic2.api.Items.getItem("carbonPlate").copy();
 		
-		GameRegistry.addShapedRecipe(new ItemStack(Items.carbonFishingRod, 1), new Object[] { "  #", " #F", "# F", 'F', carbonFibre, '#', carbonPlate});	
+		GameRegistry.addShapedRecipe(new ItemStack(Items.carbonFishingRod, 1), new Object[] { "  #", " #F", "# F", 'F', carbonFibre, '#', carbonPlate});
+		
+		//CAMPMERDA
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampRawBacon").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampCookedBacon"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampRawSausage").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampCookedSausage"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampRawScrambledEgg").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampScrambledEgg"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampRawFriedEgg").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampFriedEgg"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampRawHamburger").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampCookedHamburger"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampRawFishStew").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampCookedFishStew"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampRawPumpkinStew").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampCookedPumpkinStew"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampRawDeerStew").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampCookedDeerStew"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampRawBearStew").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampCookedBearStew"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampRawMinecraftStew").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampCookedMinecraftStew"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampRawRabbitStew").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampCookedRabbitStew"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("RawPumpkinSlice").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CookedPumpkinSlice"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampBreadSlice").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampToast"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CheeseSandwich").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CheeseToastie"), 1), 0.15f);
+		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("RawFrogSoup").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("FrogSoup"), 1), 0.15f);
 	}
 }

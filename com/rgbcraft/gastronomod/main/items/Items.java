@@ -142,9 +142,9 @@ public class Items {
 	    base_pizza = new Item(10070).setItemName("base_pizza").setCreativeTab(CreativeTab.tabGastronomodCibi).setTextureFile(texture).setIconIndex(48).setMaxStackSize(4);
 	    spicchio_aglio = new ItemFood(10071, 1, 0.5f, false).setItemName("spicchio_aglio").setCreativeTab(CreativeTab.tabGastronomodCibi).setTextureFile(texture).setIconIndex(50);
 	    
-	    pizza_margherita_nc = new Item(10072).setCreativeTab(CreativeTab.tabGastronomodCibi).setItemName("pizza_margherita_nc").setTextureFile(texture).setIconIndex(51).setMaxStackSize(1);
-	    pizza_marinara_nc = new Item(10073).setCreativeTab(CreativeTab.tabGastronomodCibi).setItemName("pizza_marinara_nc").setTextureFile(texture).setIconIndex(52).setMaxStackSize(1);
-	    pizza_capricciosa_nc = new Item(10074).setCreativeTab(CreativeTab.tabGastronomodCibi).setItemName("pizza_capricciosa_nc").setTextureFile(texture).setIconIndex(57).setMaxStackSize(1);
+	    pizza_margherita_nc = new Item(10072).setCreativeTab(CreativeTab.tabGastronomodCibi).setItemName("pizza_margherita_nc").setTextureFile(texture).setIconIndex(51).setMaxStackSize(64);
+	    pizza_marinara_nc = new Item(10073).setCreativeTab(CreativeTab.tabGastronomodCibi).setItemName("pizza_marinara_nc").setTextureFile(texture).setIconIndex(52).setMaxStackSize(64);
+	    pizza_capricciosa_nc = new Item(10074).setCreativeTab(CreativeTab.tabGastronomodCibi).setItemName("pizza_capricciosa_nc").setTextureFile(texture).setIconIndex(57).setMaxStackSize(66);
 	    
 	    //riso
 	    
