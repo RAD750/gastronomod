@@ -26,21 +26,21 @@ public class CraftingHandler {
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.barattolo), new Object[] {new ItemStack(Items.barattolo_sporco), new ItemStack(Item.bucketWater)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.piatto), new Object[] {new ItemStack(Items.piatto_sporco), new ItemStack(Item.bucketWater)});
 
-
+		GameRegistry.addShapedRecipe(new ItemStack(Items.milkCarton, 64), new Object[] { " # ", "#R#", "###", '#', Item.paper, 'R', ic2.api.Items.getItem("rubber")});
 
 		//GELATO
 
 		GameRegistry.addShapedRecipe(new ItemStack(Items.vaschettaVuota), new Object[] { "   ", "# #", "###", '#', Item.paper});
 		GameRegistry.addShapedRecipe(new ItemStack(Items.gelatoCostoso), new Object[] { "#M#", "#M#", " G ", '#', Item.netherStar, 'M', Item.bucketMilk, 'G', Item.ingotGold});
-		ic2.api.Ic2Recipes.addCompressorRecipe(new ItemStack(Items.gelatoCostoso), new ItemStack(Items.conoCostoso));
-		ic2.api.Ic2Recipes.addCompressorRecipe(new ItemStack(Item.bucketMilk), new ItemStack(Items.gelatoBase));
+		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.gelatoCostoso), new ItemStack(Items.conoCostoso), 1400);
+		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.milkCarton), new ItemStack(Items.gelatoBase), 400);
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoCioccolato), new Object[] {new ItemStack(Items.gelatoBase), new ItemStack(Items.cioccolato)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoStracciatella), new Object[] {new ItemStack(Item.bucketMilk), new ItemStack(Items.gelatoBase), new ItemStack(Items.cioccolato)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoFiordilatte), new Object[] {new ItemStack(Item.bucketMilk), new ItemStack(Items.gelatoBase)});
 
-		ic2.api.Ic2Recipes.addCompressorRecipe(new ItemStack(Items.gelatoCioccolato), new ItemStack(Items.conoCioccolato));
-		ic2.api.Ic2Recipes.addCompressorRecipe(new ItemStack(Items.gelatoStracciatella), new ItemStack(Items.conoStracciatella));
-		ic2.api.Ic2Recipes.addCompressorRecipe(new ItemStack(Items.gelatoFiordilatte), new ItemStack(Items.conoFiordilatte));
+		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.gelatoCioccolato), new ItemStack(Items.conoCioccolato), 60);
+		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.gelatoStracciatella), new ItemStack(Items.conoStracciatella), 60);
+		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.gelatoFiordilatte), new ItemStack(Items.conoFiordilatte), 60);
 
 
 		ic2.api.Ic2Recipes.addMaceratorRecipe(new ItemStack(Item.dyePowder, 1, 3), new ItemStack(Items.cacaoTritato));

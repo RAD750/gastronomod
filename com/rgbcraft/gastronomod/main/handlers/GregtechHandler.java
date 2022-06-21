@@ -31,4 +31,18 @@ public class GregtechHandler {
 			} catch (Exception e) {}
 		return false;
 	}
+	
+	/**
+	 * Adds a Vacuum Freezer Recipe
+	 * @param aInput1 must be != null
+	 * @param aOutput1 must be != null
+	 * @param aDuration must be > 0
+	 */
+	public static boolean addVacuumFreezerRecipe(ItemStack aInput1, ItemStack aOutput1, int aDuration) {
+		try {
+			Class.forName("gregtechmod.GT_Mod").getMethod("addVacuumFreezerRecipe", ItemStack.class, ItemStack.class, int.class).invoke(null, aInput1, aOutput1, aDuration);
+			return true;
+		} catch (Exception e) {}
+		return false;
+	}
 }

@@ -2,6 +2,7 @@ package com.rgbcraft.gastronomod.main.items;
 
 import com.rgbcraft.gastronomod.main.CreativeTab;
 import com.rgbcraft.gastronomod.main.agri.AgriBlocks;
+import com.rgbcraft.gastronomod.main.handlers.MiniLiquidHelper;
 import com.rgbcraft.gastronomod.main.items.roba.ItemIndica;
 import com.rgbcraft.gastronomod.main.items.roba.ItemSativa;
 
@@ -11,6 +12,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSeeds;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.liquids.LiquidDictionary;
 
 public class Items {
 		
@@ -63,6 +66,8 @@ public class Items {
 	public static Item sativaSemi, sativaFoglia, indicaSemi, indicaFoglia;
 	public static Item sativaCannone, indicaCannone;
 
+	public static Item milkCarton;
+	
 	//texture file
 	
 	public static final String texture = "/com/rgbcraft/gastronomod/textures/items.png";
@@ -207,7 +212,11 @@ public class Items {
 		sugo_pomodoro = new Item(10004).setIconIndex(114).setItemName("sugo_pomodoro").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setContainerItem(Items.barattolo_sporco);
 		
 		cocacola = new ItemBottigliaCocaCola(10005, 3, 1.5f, false).setPotionEffect(3, 60, 10, 100.0f).setIconIndex(192).setItemName("cocacola").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setContainerItem(Items.bottiglia);
+		milkCarton = new ItemMilkCarton(10006, 3, 0.5f, false, 180);
 		
+		if (LiquidDictionary.getLiquid("milk", 1) != null) {		
+			MiniLiquidHelper.registerLiquidContainer("milk", new ItemStack(Items.milkCarton), null);
+		}
 		
 		//pesci
 		tonnoPinneGialle = new ItemFood(10150, 4, 1.5f, false).setIconIndex(96).setItemName("tonnoPinneGialle").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodPesca);
@@ -228,6 +237,8 @@ public class Items {
 	public static void RegistraLingua() {
 	
 		LanguageRegistry.addName(carbonFishingRod, "Carbon Fiber Fishing Rod");
+		
+		LanguageRegistry.addName(milkCarton, "Milk Carton");
 		
 		LanguageRegistry.addName(bogusCibo, "Hai trovato un bug grave se hai ottenuto legittimamente questo item. Segnala a lego11.");
 		
