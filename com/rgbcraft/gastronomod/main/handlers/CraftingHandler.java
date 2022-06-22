@@ -26,12 +26,16 @@ public class CraftingHandler {
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.barattolo), new Object[] {new ItemStack(Items.barattolo_sporco), new ItemStack(Item.bucketWater)});
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.piatto), new Object[] {new ItemStack(Items.piatto_sporco), new ItemStack(Item.bucketWater)});
 
-		GameRegistry.addShapedRecipe(new ItemStack(Items.milkCarton, 64), new Object[] { " # ", "#R#", "###", '#', Item.paper, 'R', ic2.api.Items.getItem("rubber")});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.emptyCarton, 64), new Object[] { " # ", "#R#", "###", '#', Item.paper, 'R', ic2.api.Items.getItem("rubber")});
 
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.milkCarton), new Object[] {new ItemStack(Item.bucketMilk), new ItemStack(Items.emptyCarton)});
+		
 		//GELATO
 
 		GameRegistry.addShapedRecipe(new ItemStack(Items.vaschettaVuota), new Object[] { "   ", "# #", "###", '#', Item.paper});
 		GameRegistry.addShapedRecipe(new ItemStack(Items.gelatoCostoso), new Object[] { "#M#", "#M#", " G ", '#', Item.netherStar, 'M', Item.bucketMilk, 'G', Item.ingotGold});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.gelatoCostoso), new Object[] { "#M#", "#M#", " G ", '#', Item.netherStar, 'M', Items.milkCarton, 'G', Item.ingotGold});
+
 		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.gelatoCostoso), new ItemStack(Items.conoCostoso), 1400);
 		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.milkCarton), new ItemStack(Items.gelatoBase), 400);
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoCioccolato), new Object[] {new ItemStack(Items.gelatoBase), new ItemStack(Items.cioccolato)});
@@ -57,11 +61,15 @@ public class CraftingHandler {
 
 		//grassi e condimenti
 		ic2.api.Ic2Recipes.addExtractorRecipe(new ItemStack(Item.bucketMilk), new ItemStack(Items.burro));
+		ic2.api.Ic2Recipes.addExtractorRecipe(new ItemStack(Items.milkCarton), new ItemStack(Items.burro));
+
 		GameRegistry.addSmelting(Item.bucketWater.itemID, new ItemStack(Items.sale), 0.1f);
 		GameRegistry.addSmelting(ic2.api.Items.getItem("waterCell").itemID, new ItemStack(Items.sale), 0.1f);
 
 		GameRegistry.addRecipe(new ItemStack(Items.parmigiano, 2), new Object[] { "   ", "###", " # ", '#', Item.bucketMilk});
 		GameRegistry.addRecipe(new ItemStack(Items.mozzarella, 2), new Object[] { "   ", " ##", " ##", '#', Item.bucketMilk});
+		GameRegistry.addRecipe(new ItemStack(Items.parmigiano, 2), new Object[] { "   ", "###", " # ", '#', Items.milkCarton});
+		GameRegistry.addRecipe(new ItemStack(Items.mozzarella, 2), new Object[] { "   ", " ##", " ##", '#', Items.milkCarton});
 		ic2.api.Ic2Recipes.addMaceratorRecipe(new ItemStack(Items.parmigiano), new ItemStack(Items.parmigiano_gratt));
 
 		//farine
@@ -73,6 +81,8 @@ public class CraftingHandler {
 
 		//pane
 		GameRegistry.addRecipe(new ItemStack(Items.pane_nero_nc, 4), new Object[] { "FSF", "FLF", "ABT", 'F', Items.farina_int, 'S', Item.pumpkinSeeds, 'L', Items.lievito, 'A', Items.sale, 'B', Item.bucketWater, 'T', Item.bucketMilk});
+		GameRegistry.addRecipe(new ItemStack(Items.pane_nero_nc, 4), new Object[] { "FSF", "FLF", "ABT", 'F', Items.farina_int, 'S', Item.pumpkinSeeds, 'L', Items.lievito, 'A', Items.sale, 'B', Item.bucketWater, 'T', Items.milkCarton});
+
 		GameRegistry.addSmelting(Items.pane_nero_nc.itemID, new ItemStack(Items.pane_nero, 1), 0.15f);
 
 		ic2.api.Ic2Recipes.addMaceratorRecipe(new ItemStack(Item.bread, 1), new ItemStack(Items.pangrattato, 1));
@@ -83,9 +93,13 @@ public class CraftingHandler {
 
 		//tiramisù
 		GameRegistry.addRecipe(new ItemStack(Items.tiramisu, 1), new Object[] { "CZC", "FSF", "CLC", 'C', new ItemStack(Item.dyePowder, 1, 3), 'Z', Item.sugar, 'F', Items.farina_00, 'S', Items.shortbread, 'L', Item.bucketMilk});
+		GameRegistry.addRecipe(new ItemStack(Items.tiramisu, 1), new Object[] { "CZC", "FSF", "CLC", 'C', new ItemStack(Item.dyePowder, 1, 3), 'Z', Item.sugar, 'F', Items.farina_00, 'S', Items.shortbread, 'L', Items.milkCarton});
+
 
 		//nutella
 		GameRegistry.addRecipe(new ItemStack(Items.nutella, 1), new Object[] {"CBC", "CLC", " O ", 'C', new ItemStack(Item.dyePowder, 1, 3), 'B', Items.burro, 'L', Item.bucketMilk, 'O', Items.barattolo});
+		GameRegistry.addRecipe(new ItemStack(Items.nutella, 1), new Object[] {"CBC", "CLC", " O ", 'C', new ItemStack(Item.dyePowder, 1, 3), 'B', Items.burro, 'L', Items.milkCarton, 'O', Items.barattolo});
+
 
 		//pasta
 		GameRegistry.addRecipe(new ItemStack(Items.spaghetti, 4), new Object[] { "#E#", "#E#", "#E#", '#', Items.farina_00, 'E', Item.egg});

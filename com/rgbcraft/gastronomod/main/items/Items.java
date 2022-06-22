@@ -66,7 +66,7 @@ public class Items {
 	public static Item sativaSemi, sativaFoglia, indicaSemi, indicaFoglia;
 	public static Item sativaCannone, indicaCannone;
 
-	public static Item milkCarton;
+	public static Item emptyCarton, milkCarton;
 	
 	//texture file
 	
@@ -212,10 +212,12 @@ public class Items {
 		sugo_pomodoro = new Item(10004).setIconIndex(114).setItemName("sugo_pomodoro").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setContainerItem(Items.barattolo_sporco);
 		
 		cocacola = new ItemBottigliaCocaCola(10005, 3, 1.5f, false).setPotionEffect(3, 60, 10, 100.0f).setIconIndex(192).setItemName("cocacola").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setContainerItem(Items.bottiglia);
+		
 		milkCarton = new ItemMilkCarton(10006, 3, 0.5f, false, 180);
+		emptyCarton = new Item(10007).setIconIndex(181).setItemName("emptyCarton").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
 		
 		if (LiquidDictionary.getLiquid("milk", 1) != null) {		
-			MiniLiquidHelper.registerLiquidContainer("milk", new ItemStack(Items.milkCarton), null);
+			MiniLiquidHelper.registerLiquidContainer("milk", new ItemStack(Items.milkCarton), new ItemStack(Items.emptyCarton));
 		}
 		
 		//pesci
@@ -238,6 +240,7 @@ public class Items {
 	
 		LanguageRegistry.addName(carbonFishingRod, "Carbon Fiber Fishing Rod");
 		
+		LanguageRegistry.addName(emptyCarton, "Empty Carton");
 		LanguageRegistry.addName(milkCarton, "Milk Carton");
 		
 		LanguageRegistry.addName(bogusCibo, "Hai trovato un bug grave se hai ottenuto legittimamente questo item. Segnala a lego11.");
