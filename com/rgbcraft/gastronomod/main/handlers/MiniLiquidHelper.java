@@ -1,6 +1,7 @@
 package com.rgbcraft.gastronomod.main.handlers;
 
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.liquids.LiquidContainerData;
 import net.minecraftforge.liquids.LiquidContainerRegistry;
@@ -14,8 +15,8 @@ public class MiniLiquidHelper {
 	 * @param containerItem The item of the full container
 	 * @param containerItemEmpty The item of the empty container
 	 */
-	public static void registerLiquidContainer(String liquidName, ItemStack containerItemFull, ItemStack containerItemEmpty) {	
-		LiquidStack liquidStack = LiquidDictionary.getOrCreateLiquid(liquidName, null);		
+	public static void registerLiquidContainer(String liquidName, LiquidStack fallbackLiquidStack, ItemStack containerItemFull, ItemStack containerItemEmpty) {	
+		LiquidStack liquidStack = LiquidDictionary.getOrCreateLiquid(liquidName, fallbackLiquidStack);		
 		LiquidContainerData liquidData = new LiquidContainerData(liquidStack, containerItemFull, containerItemEmpty);
 		LiquidContainerRegistry.registerLiquid(liquidData);
 	}

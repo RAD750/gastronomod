@@ -29,6 +29,7 @@ public class ClientProxy extends CommonProxy {
 		// Preloading texture per evitare bug
 		MinecraftForgeClient.preloadTexture("/com/rgbcraft/gastronomod/textures/agri.png");
 		MinecraftForgeClient.preloadTexture("/com/rgbcraft/gastronomod/textures/items.png");
+		MinecraftForgeClient.preloadTexture("/com/rgbcraft/gastronomod/textures/flori.png");
 	    System.out.println("[Gastronomod] Preloading texture completato");
 
 	}

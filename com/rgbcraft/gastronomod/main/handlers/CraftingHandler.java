@@ -1,10 +1,12 @@
 package com.rgbcraft.gastronomod.main.handlers;
 
+import com.rgbcraft.gastronomod.main.agri.AgriBlocks;
 import com.rgbcraft.gastronomod.main.items.Items;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ic2.api.Ic2Recipes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSapling;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -185,5 +187,90 @@ public class CraftingHandler {
 		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CampBreadSlice").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CampToast"), 1), 0.15f);
 		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("CheeseSandwich").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("CheeseToastie"), 1), 0.15f);
 		GameRegistry.addSmelting(CampmerdHandler.getCampMerdItem("RawFrogSoup").itemID, new ItemStack(CampmerdHandler.getCampMerdItem("FrogSoup"), 1), 0.15f);
+		
+		//dies
+		
+		//rosso
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 1), new Object[] {new ItemStack(AgriBlocks.poppy, 1)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 1), new Object[] {new ItemStack(AgriBlocks.redTulip, 1)});
+		
+		//blu
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 4), new Object[] {new ItemStack(AgriBlocks.cornflower, 1)});
+		//azzurro
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 12), new Object[] {new ItemStack(AgriBlocks.blueOrchid, 1)});
+
+		//grigio chiaro
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 7), new Object[] {new ItemStack(AgriBlocks.azureBluet, 1)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 7), new Object[] {new ItemStack(AgriBlocks.oxeyeDaisy, 1)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 7), new Object[] {new ItemStack(AgriBlocks.whiteTulip, 1)});
+		
+		//magenta
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 13), new Object[] {new ItemStack(AgriBlocks.allium, 1)});
+		
+		//arancione
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 14), new Object[] {new ItemStack(AgriBlocks.orangeTulip, 1)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 14), new Object[] {new ItemStack(AgriBlocks.torchFlower, 1)});
+		
+		//rosa
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 14), new Object[] {new ItemStack(AgriBlocks.pinkTulip, 1)});
+		
+		//bianco
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.dyePowder, 1, 15), new Object[] {new ItemStack(AgriBlocks.lilyValley, 1)});
+		
+		
+		//Suspicious Stew
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', AgriBlocks.allium
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', AgriBlocks.azureBluet
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', AgriBlocks.blueOrchid
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', Block.plantYellow
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', AgriBlocks.cornflower
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', AgriBlocks.lilyValley
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', AgriBlocks.oxeyeDaisy
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', AgriBlocks.torchFlower
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', Block.plantRed
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', AgriBlocks.orangeTulip
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', AgriBlocks.pinkTulip
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', AgriBlocks.redTulip
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.suspiciousStew, 1), new Object[] {
+				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
+				'F', AgriBlocks.witherRose
+		});
 	}
+	
 }

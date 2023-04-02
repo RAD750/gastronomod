@@ -13,7 +13,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.liquids.LiquidContainerRegistry;
 import net.minecraftforge.liquids.LiquidDictionary;
+import net.minecraftforge.liquids.LiquidStack;
 
 public class Items {
 		
@@ -52,7 +54,7 @@ public class Items {
 	//dolci
 	public static Item shortbread_nc, shortbread, nutella, tiramisu, gelatoBase, cioccolato;
 	
-	public static Item bogusCibo;
+	public static Item bogusCibo, suspiciousStew;
 	
 	public static Item arancino_crudo, arancino;
 	
@@ -90,27 +92,27 @@ public class Items {
 		
 		
 		//farine
-		farina_int = new Item(10010).setIconIndex(145).setItemName("farina_int").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
-		farina_00 = new Item(10011).setIconIndex(144).setItemName("farina_00").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
-		lievito = new Item(10012).setIconIndex(146).setItemName("lievito").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setMaxStackSize(16);
+		farina_int = new GenericItem(10010, 145, "farina_int", CreativeTab.tabGastronomodCibi, 64);
+		farina_00 = new GenericItem(10011, 144, "farina_00", CreativeTab.tabGastronomodCibi, 64);
+		lievito = new GenericItem(10012, 146, "lievito", CreativeTab.tabGastronomodCibi, 16);
 		
-		spaghetti = new Item(10020).setIconIndex(160).setItemName("spaghetti").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setMaxStackSize(32);
-		pane_nero_nc = new Item(10021).setItemName("pane_nero_nc").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setIconIndex(54).setMaxStackSize(16);
+		spaghetti = new GenericItem(10020, 160, "spaghetti", CreativeTab.tabGastronomodCibi, 32);
+		pane_nero_nc = new GenericItem(10021, 54, "pane_nero_nc", CreativeTab.tabGastronomodCibi, 16);
 		pane_nero = new ItemFood(10022, 6, 1.5f, true).setPotionEffect(5, 180, 5, 100.0f).setItemName("pane_nero").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setIconIndex(55).setMaxStackSize(16);
 		
-		pangrattato = new Item(10023).setItemName("pangrattato").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setIconIndex(56);
+		pangrattato = new GenericItem(10023, 56, "pangrattato", CreativeTab.tabGastronomodCibi, 64);
 		
 		
 		//dolci
 			
 		nutella = new ItemBarattolo(10030, 20).setPotionEffect(20, 5, 3, 100.0f).setIconIndex(128).setTextureFile(texture).setItemName("nutella").setCreativeTab(CreativeTab.tabGastronomodCibi);
-		shortbread_nc = new Item(10031).setIconIndex(129).setItemName("shortbread_nc").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setMaxStackSize(24);
+		shortbread_nc = new GenericItem(10031, 129, "shortbread_nc", CreativeTab.tabGastronomodCibi, 24);
 		shortbread = new ItemFood(10032, 2, 1.0f, false).setIconIndex(131).setItemName("shortbread").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setMaxStackSize(24);
 	    tiramisu = new ItemFood(10033, 4, 1.0f, false).setIconIndex(130).setItemName("tiramisu").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setMaxStackSize(1);
 	    cioccolato = new ItemFood(10039, 6, 1.5f, true).setPotionEffect(5, 180, 5, 100.0f).setItemName("cioccolato").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setIconIndex(132).setMaxStackSize(16);
-	    cacaoTritato = new Item(10013).setIconIndex(133).setItemName("cacaoTriato").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+	    cacaoTritato = new GenericItem(10013, 133, "cacaoTriato", CreativeTab.tabGastronomodCibi, 64);
 	    
-	    conoVuoto = new Item(10140).setIconIndex(224).setItemName("conoVuoto").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodAltro);
+	    conoVuoto = new GenericItem(10140, 224, "conoVuoto", CreativeTab.tabGastronomodAltro, 64);
 	    conoCioccolato = new ItemFood(10034, 4, 1.5f, true).setAlwaysEdible().setPotionEffect(5, 120, 5, 90.0f).setItemName("conoCioccolato").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setIconIndex(225).setMaxStackSize(3);
 	    //conoPistacchio = new ItemFood(10035, 4, 1.5f, true).setAlwaysEdible().setPotionEffect(5, 120, 5, 90.0f).setItemName("conoPistacchio").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setIconIndex(226).setMaxStackSize(3);
 	    conoStracciatella = new ItemFood(10036, 4, 1.5f, true).setAlwaysEdible().setPotionEffect(5, 120, 5, 90.0f).setItemName("conoStracciatella").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setIconIndex(227).setMaxStackSize(3);
@@ -118,19 +120,19 @@ public class Items {
 	    conoCostoso = new ItemFood(10038, 6, 1.5f, true).setAlwaysEdible().setPotionEffect(5, 1000, 5, 100.0f).setItemName("conoCostoso").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setIconIndex(229).setMaxStackSize(3);
 	    
 		//piatti, barattori, pentole, pentolini vuoti
-		pentola = new Item(10040).setItemName("pentola").setCreativeTab(CreativeTab.tabGastronomodAltro).setTextureFile(texture).setIconIndex(0).setMaxStackSize(4);
-		pentola_sporca = new Item(10041).setItemName("pentola_sporca").setCreativeTab(CreativeTab.tabGastronomodAltro).setTextureFile(texture).setIconIndex(1).setMaxStackSize(4);
-		pentolino = new Item(10042).setItemName("pentolino").setCreativeTab(CreativeTab.tabGastronomodAltro).setTextureFile(texture).setIconIndex(2).setMaxStackSize(4);
-		pentolino_sporco = new Item(10043).setItemName("pentolino_sporco").setCreativeTab(CreativeTab.tabGastronomodAltro).setTextureFile(texture).setIconIndex(3).setMaxStackSize(4);
-	    piatto = new Item(10044).setItemName("piatto_vuoto").setCreativeTab(CreativeTab.tabGastronomodAltro).setTextureFile(texture).setIconIndex(4).setMaxStackSize(16);
-	    piatto_sporco = new Item(10045).setItemName("piatto_sporco").setCreativeTab(CreativeTab.tabGastronomodAltro).setTextureFile(texture).setIconIndex(5).setMaxStackSize(16);
-	    barattolo = new Item(10046).setItemName("barattolo").setCreativeTab(CreativeTab.tabGastronomodAltro).setTextureFile(texture).setIconIndex(6).setMaxStackSize(4);
-	    barattolo_sporco = new Item(10047).setItemName("barattolo_sporco").setCreativeTab(CreativeTab.tabGastronomodAltro).setTextureFile(texture).setIconIndex(7).setMaxStackSize(4);
-	    bottiglia = new Item(10048).setItemName("bottiglia)").setCreativeTab(CreativeTab.tabGastronomodAltro).setTextureFile(texture).setIconIndex(8).setMaxStackSize(6);
+		pentola = new GenericItem(10040, 0, "pentola", CreativeTab.tabGastronomodAltro, 4);
+		pentola_sporca = new GenericItem(10041, 1, "pentola_sporca", CreativeTab.tabGastronomodAltro, 4);
+		pentolino = new GenericItem(10042, 2, "pentolino", CreativeTab.tabGastronomodAltro, 4);
+		pentolino_sporco = new GenericItem(10043, 3, "pentolino_sporco", CreativeTab.tabGastronomodAltro, 4);
+	    piatto = new GenericItem(10044, 4, "piatto_vuoto", CreativeTab.tabGastronomodAltro, 16);
+	    piatto_sporco = new GenericItem(10045, 5, "piatto_sporco", CreativeTab.tabGastronomodAltro, 16);
+	    barattolo = new GenericItem(10046, 6, "barattolo", CreativeTab.tabGastronomodAltro, 4);
+	    barattolo_sporco = new GenericItem(10047, 7, "barattolo_sporco", CreativeTab.tabGastronomodAltro, 4);
+	    bottiglia = new GenericItem(10048, 8, "bottiglia)", CreativeTab.tabGastronomodAltro, 6);
 		
 	    mozzarella = new ItemFood(10050, 6, 1.0f, false).setItemName("mozzarella").setIconIndex(179).setCreativeTab(CreativeTab.tabGastronomodCibi).setTextureFile(texture).setMaxStackSize(8);
 	    parmigiano = new ItemFood(10051, 4, 1.0f, false).setItemName("parmigiano").setIconIndex(177).setCreativeTab(CreativeTab.tabGastronomodCibi).setTextureFile(texture).setMaxStackSize(8);
-	    parmigiano_gratt = new Item(10052).setItemName("parmigiano_gratt").setIconIndex(178).setCreativeTab(CreativeTab.tabGastronomodCibi).setTextureFile(texture).setMaxStackSize(32);
+	    parmigiano_gratt = new ItemFood(10052, 1, 0.0f, false).setItemName("parmigiano_gratt").setIconIndex(178).setCreativeTab(CreativeTab.tabGastronomodCibi).setTextureFile(texture).setMaxStackSize(32);
 	    
 	    //pentole con roba da cuocere
 	    pentola_acqua = new Item(10060).setItemName("pentola_acqua").setCreativeTab(CreativeTab.tabGastronomodAltro).setTextureFile(texture).setIconIndex(64).setMaxStackSize(1);
@@ -216,9 +218,12 @@ public class Items {
 		milkCarton = new ItemMilkCarton(10006, 3, 0.5f, false, 180);
 		emptyCarton = new Item(10007).setIconIndex(181).setItemName("emptyCarton").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
 		
-		if (LiquidDictionary.getLiquid("milk", 1) != null) {		
-			MiniLiquidHelper.registerLiquidContainer("milk", new ItemStack(Items.milkCarton), new ItemStack(Items.emptyCarton));
-		}
+		//Bugfix (Non so se serve)
+
+		Item milkLiquid = new GenericItem(10007-256, 15, "milkLiquid", null, 64);
+		LanguageRegistry.addName(milkLiquid, "Milk");
+
+		MiniLiquidHelper.registerLiquidContainer("milk", new LiquidStack(milkLiquid, LiquidContainerRegistry.BUCKET_VOLUME), new ItemStack(Items.milkCarton), new ItemStack(Items.emptyCarton));
 		
 		//pesci
 		tonnoPinneGialle = new ItemFood(10150, 4, 1.5f, false).setIconIndex(96).setItemName("tonnoPinneGialle").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodPesca);
@@ -230,6 +235,10 @@ public class Items {
 		
 		tonnoScatola = new ItemScatoletta(10160, 4).setIconIndex(86).setItemName("tonnoScatola").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
 		cornedBeef = new ItemScatoletta(10161, 5).setIconIndex(85).setItemName("cornedBeef").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		
+		//suspiciousStew
+		
+		suspiciousStew = new ItemScodella(10154, 6).setIconIndex(24).setItemName("suspiciousStew");
 	}
 	
 	
@@ -361,6 +370,8 @@ public class Items {
 		
 		LanguageRegistry.addName(tonnoScatola, "Tonno in scatola");
 		LanguageRegistry.addName(cornedBeef, "Corned beef (USA)");
+		
+		LanguageRegistry.addName(suspiciousStew, "Suspicious Stew");
 	}
 }
 
