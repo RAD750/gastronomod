@@ -6,7 +6,7 @@ import net.minecraft.block.material.Material;
 
 public class AgriBlocks {
 	
-	public static Block BlockPomodoro, BlockBasilico, BlockSativa, BlockIndica, BlockAglio, BlockPrezzemolo, BlockRiso, BlockCarciofo;
+	public static Block BlockPomodoro, BlockBasilico, BlockSativa, BlockIndica, BlockAglio, BlockPrezzemolo, BlockRiso, BlockCarciofo, BlockSenape;
 	public static Block blueOrchid, allium, azureBluet, orangeTulip, oxeyeDaisy, cornflower, lilyValley, torchFlower, poppy, witherRose, pinkTulip, whiteTulip, redTulip;
 	public static final String textureAgri = "/com/rgbcraft/gastronomod/textures/agri.png";
 
@@ -20,6 +20,7 @@ public class AgriBlocks {
 		BlockPrezzemolo = new BlockPrezzemolo(3903, 80).setBlockName("BlockPrezzemolo").setTextureFile(textureAgri);
 		BlockRiso = new BlockRiso(3904, 96).setBlockName("BlockRiso").setTextureFile(textureAgri);
 		BlockCarciofo = new BlockCarciofo(3905, 112).setBlockName("BlockCarciofo").setTextureFile(textureAgri);
+		BlockSenape = new BlockSenape(3906, 128).setBlockName("BlockSenape").setTextureFile(textureAgri);
 		
 		blueOrchid = new BlockGenericFlower(3950, 0, Material.plants, "blueOrchid");
 		allium = new BlockGenericFlower(3951, 1, Material.plants, "allium");

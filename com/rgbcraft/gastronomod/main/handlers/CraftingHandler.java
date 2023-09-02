@@ -271,6 +271,50 @@ public class CraftingHandler {
 				"   ", "VM ", "SF ", 'V', Block.mushroomRed, 'M', Block.mushroomBrown, 'S', Item.bowlEmpty,
 				'F', AgriBlocks.witherRose
 		});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(CampmerdHandler.getCampMerdItem("CampTomatoe")), new Object[] {new ItemStack(Items.pomodoro, 1)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.pomodoro, 1), new Object[] {new ItemStack(CampmerdHandler.getCampMerdItem("CampTomatoe"))});
+		ic2.api.Ic2Recipes.addMaceratorRecipe(new ItemStack(Items.senapeSemi), new ItemStack(Items.senape));
+		
+		
+		GregtechHandler.addCentrifugeRecipe(new ItemStack(Item.egg, 4), 1, new ItemStack(Items.mayo, 1), null, null, null, 60);
+		GregtechHandler.addCentrifugeRecipe(new ItemStack(Items.pomodoro, 4), 1, new ItemStack(Items.ketchup, 1), null, null, null, 60);
+		
+		ic2.api.Ic2Recipes.addMaceratorRecipe(new ItemStack(Item.beefRaw), new ItemStack(Items.rawHamburger));
+		GameRegistry.addSmelting(Items.rawHamburger.itemID, new ItemStack(Items.cookedHamburger), 0.2f);
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.burger), new Object[] {new ItemStack(Item.bread), new ItemStack(Items.cookedHamburger)});
+		GameRegistry.addShapedRecipe(new ItemStack(Items.maxiBurger), new Object[] {
+				" P ", "BIB", " T ", 'T', Items.pomodoro, 'B', Items.cookedHamburger, 'P', Item.bread,
+				'I', CampmerdHandler.getCampMerdItem("CampLettuce")
+		});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.cheddar), new Object[] {new ItemStack(Items.sale), CampmerdHandler.getCampMerdItem("CampCheese")});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(Items.cheeseBurger), new Object[] {
+				" P ", "BIB", "TC ", 'T', Items.pomodoro, 'B', Items.cookedHamburger, 'P', Item.bread,
+				'I', CampmerdHandler.getCampMerdItem("CampLettuce"), 'C', Items.cheddar
+		});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(Items.cheeseBurgerBacon), new Object[] {
+				" P ", "BIB", "TCB", 'T', Items.pomodoro, 'B', Items.cookedHamburger, 'P', Item.bread,
+				'I', CampmerdHandler.getCampMerdItem("CampLettuce"), 'C', Items.cheddar, 'B', CampmerdHandler.getCampMerdItem("CampCookedBacon")
+		});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.frittoPesce, 2), new Object[] {new ItemStack(Item.fishRaw), new ItemStack(Items.pangrattato), new ItemStack(Items.pentola_olio_bollente)});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.crocche, 4), new Object[] {new ItemStack(Item.potato), new ItemStack(Items.pangrattato), new ItemStack(Items.pentola_olio_bollente)});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.crocchette, 6), new Object[] {new ItemStack(Item.chickenCooked), new ItemStack(Items.pangrattato), new ItemStack(Items.pentola_olio_bollente)});
+
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.graffa, 4), new Object[] {new ItemStack(Item.bakedPotato), new ItemStack(Items.burro), new ItemStack(Item.sugar), new ItemStack(Items.farina_00), new ItemStack(Items.pentola_olio_bollente)});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.bomboloneCrema, 2), new Object[] {new ItemStack(Item.bakedPotato), new ItemStack(Items.burro), new ItemStack(Item.sugar), new ItemStack(Items.farina_00), new ItemStack(Item.egg), new ItemStack(Items.pentola_olio_bollente)});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.donut, 16), new Object[] {new ItemStack(Item.bucketMilk), new ItemStack(Items.burro), new ItemStack(Item.sugar), new ItemStack(Items.farina_00), new ItemStack(Item.egg), new ItemStack(Items.pentola_olio_bollente)});
+
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.patatineFritte, 4), new Object[] {new ItemStack(Item.potato), new ItemStack(Items.sale), new ItemStack(Items.pentola_olio_bollente)});
+		
 	}
 	
 }

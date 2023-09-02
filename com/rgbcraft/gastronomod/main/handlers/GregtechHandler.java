@@ -45,4 +45,24 @@ public class GregtechHandler {
 		} catch (Exception e) {}
 		return false;
 	}
+	
+	/**
+	 * Adds a CentrifugeRecipe
+	 * @param aInput1 must be != null
+	 * @param aCellInput this is for the needed Cells, > 0 for Tincellcount, < 0 for negative Fuelcancount, == 0 for nothing
+	 * @param aOutput1 must be != null
+	 * @param aOutput2 can be null
+	 * @param aOutput3 can be null
+	 * @param aOutput4 can be null
+	 * @param aDuration must be > 0
+	 */
+	
+	public static boolean addCentrifugeRecipe(ItemStack aInput1, int aCellInput, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, ItemStack aOutput4, int aDuration) {
+		try {
+			Class.forName("gregtechmod.GT_Mod").getMethod("addCentrifugeRecipe", ItemStack.class, int.class, ItemStack.class, ItemStack.class, ItemStack.class, ItemStack.class, int.class).invoke(null, aInput1, aCellInput, aOutput1, aOutput2, aOutput3, aOutput4, aDuration);
+			return true;
+		} catch (Exception e) {}
+		return false;
+	}
+
 }

@@ -25,7 +25,7 @@ import net.minecraft.src.BaseMod;
 import net.minecraftforge.common.MinecraftForge;
 
 
-@Mod(name="Gastronomod", version="1.10", modid="gastronomod", dependencies="required-after:IC2; after:CustomSpawner; required-after:CampCraft; after:Forestry; after:minefactoryreloaded")
+@Mod(name="Gastronomod", version="1.12", modid="gastronomod", dependencies="required-after:IC2; after:CustomSpawner; required-after:CampCraft; after:Forestry; after:minefactoryreloaded")
 public class Main extends BaseMod{
 
 	//proxy per prerendering
@@ -34,7 +34,7 @@ public class Main extends BaseMod{
 	
 	@Override
 	public String getVersion() {
-		return "1.10";
+		return "1.12";
 	}
 
 	@Override

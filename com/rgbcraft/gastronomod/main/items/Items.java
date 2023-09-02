@@ -64,11 +64,15 @@ public class Items {
 	public static Item conoVuoto, conoCioccolato, conoPistacchio, conoStracciatella, conoFiordilatte, conoCostoso;
 	public static Item vaschettaVuota, gelatoCioccolato, gelatoPistacchio, gelatoStracciatella, gelatoFiordilatte, gelatoCostoso, cacaoTritato;
 	
+	public static Item senape, mayo, ketchup, rawHamburger, cookedHamburger, cheddar, burger, maxiBurger, cheeseBurger, cheeseBurgerBacon, frittoPesce;
+	public static Item crocche, crocchette, graffa, bomboloneCrema, donut, acquaFrizzante, cola, aranciata, energyDrink, patatineFritte; 
+	
 	//MARIA
 	public static Item sativaSemi, sativaFoglia, indicaSemi, indicaFoglia;
 	public static Item sativaCannone, indicaCannone;
 
-	public static Item emptyCarton, milkCarton;
+	public static Item emptyCarton, milkCarton, senapeSemi;
+	
 	
 	//texture file
 	
@@ -239,6 +243,32 @@ public class Items {
 		//suspiciousStew
 		
 		suspiciousStew = new ItemScodella(10154, 6).setIconIndex(24).setItemName("suspiciousStew");
+		
+		
+		
+		senape = new GenericItem(10162, 33, "senape", CreativeTab.tabGastronomodCibi, 1);
+		mayo = new GenericItem(10163, 34, "mayo", CreativeTab.tabGastronomodCibi, 1);
+		ketchup = new GenericItem(10164, 35, "ketchup", CreativeTab.tabGastronomodCibi, 1);
+		
+		rawHamburger = new ItemFood(10165, 1, 1.5f, false).setPotionEffect(17, 10, 2, 45.0f).setIconIndex(36).setItemName("rawHamburger").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		cookedHamburger = new ItemFood(10166, 6, 1.5f, false).setIconIndex(37).setItemName("cookedHamburger").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		cheddar = new ItemFood(10167, 1, 1.5f, false).setPotionEffect(9, 5, 2, 90.0f).setIconIndex(38).setItemName("cheddar").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		burger = new ItemFood(10168, 7, 1.5f, false).setIconIndex(39).setItemName("burger").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		maxiBurger = new ItemFood(10169, 10, 1.5f, false).setIconIndex(40).setItemName("maxiBurger").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		cheeseBurger = new ItemFood(10170, 8, 4.5f, false).setIconIndex(41).setItemName("cheeseBurger").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		cheeseBurgerBacon = new ItemFood(10171, 9, 5.5f, false).setIconIndex(42).setItemName("cheeseBurgerBacon").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		frittoPesce = new ItemFood(10172, 4, 3.5f, false).setIconIndex(43).setItemName("frittoPesce").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		crocche = new ItemFood(10173, 5, 3.5f, false).setIconIndex(44).setItemName("crocche").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		crocchette = new ItemFood(10174, 1, 3.5f, false).setIconIndex(45).setItemName("crocchette").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		graffa = new ItemFood(10175, 7, 3.5f, false).setIconIndex(46).setItemName("graffa").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		bomboloneCrema = new ItemFood(10176, 8, 3.5f, false).setPotionEffect(5, 30, 2, 100.0f).setIconIndex(47).setItemName("bomboloneCrema").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		donut = new ItemFood(10177, 4, 3.5f, false).setIconIndex(58).setItemName("donut").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		
+		
+		patatineFritte = new ItemFood(10182, 4, 3.5f, false).setIconIndex(63).setItemName("patatineFritte").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+		senapeSemi = new ItemSeeds(10183, AgriBlocks.BlockSenape.blockID, Block.tilledField.blockID).setIconIndex(132).setItemName("senapeSemi").setCreativeTab(CreativeTab.tabGastronomodAgri).setTextureFile(textureAgri);
+
+	
 	}
 	
 	
@@ -372,6 +402,31 @@ public class Items {
 		LanguageRegistry.addName(cornedBeef, "Corned beef (USA)");
 		
 		LanguageRegistry.addName(suspiciousStew, "Suspicious Stew");
+		
+		LanguageRegistry.addName(senape, "Senape");
+		LanguageRegistry.addName(mayo, "Maionese");
+		LanguageRegistry.addName(ketchup, "Ketchup");
+		LanguageRegistry.addName(rawHamburger, "Hamburger crudo");
+		LanguageRegistry.addName(cookedHamburger, "Hamburger cotto");
+		LanguageRegistry.addName(cheddar, "Cheddar");
+		LanguageRegistry.addName(burger, "Burger");
+		LanguageRegistry.addName(maxiBurger, "Maxi Burger");
+		LanguageRegistry.addName(cheeseBurger, "Cheese Burger");
+		LanguageRegistry.addName(cheeseBurgerBacon, "Bacon Cheese Burger");
+		
+		LanguageRegistry.addName(frittoPesce, "Fritto di pesce");
+		LanguageRegistry.addName(crocche, "Crocchè");
+		LanguageRegistry.addName(crocchette, "Crocchette");
+		LanguageRegistry.addName(graffa, "Graffa");
+		LanguageRegistry.addName(bomboloneCrema, "Bombolone alla crema");
+		LanguageRegistry.addName(donut, "Donut");
+		/*
+		LanguageRegistry.addName(acquaFrizzante, "Acqua frizzante");
+		LanguageRegistry.addName(cola, "Cola");
+		LanguageRegistry.addName(aranciata, "Aranciata");
+		LanguageRegistry.addName(energyDrink, "Energy Drink");
+		*/
+		LanguageRegistry.addName(patatineFritte, "Patatine Fritte");
 	}
 }
 
