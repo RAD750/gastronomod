@@ -404,6 +404,7 @@ public class Items {
 		LanguageRegistry.addName(suspiciousStew, "Suspicious Stew");
 		
 		LanguageRegistry.addName(senape, "Senape");
+		LanguageRegistry.addName(senapeSemi, "Semi di senape");
 		LanguageRegistry.addName(mayo, "Maionese");
 		LanguageRegistry.addName(ketchup, "Ketchup");
 		LanguageRegistry.addName(rawHamburger, "Hamburger crudo");
