@@ -29,9 +29,15 @@ public class ItemMilkCarton extends ItemFood {
         return EnumAction.drink;
     }
     
+    /*
 	public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {
         super.onFoodEaten(par1ItemStack, par2World, par3EntityPlayer);
+        if (!par2World.isRemote)
+        {
+            par3EntityPlayer.curePotionEffects(par1ItemStack);
+        }
+        --par1ItemStack.stackSize;
         return null;
-    }
+    }*/
 }
