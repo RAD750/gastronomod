@@ -29,6 +29,8 @@ public class ItemMilkCarton extends ItemFood {
         return EnumAction.drink;
     }
     
+    
+    
     /*
 	public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {

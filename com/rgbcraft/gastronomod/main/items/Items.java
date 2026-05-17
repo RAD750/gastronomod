@@ -1,7 +1,10 @@
 package com.rgbcraft.gastronomod.main.items;
 
+import java.lang.reflect.Constructor;
+
 import com.rgbcraft.gastronomod.main.CreativeTab;
 import com.rgbcraft.gastronomod.main.agri.AgriBlocks;
+import com.rgbcraft.gastronomod.main.handlers.DrinkProxy;
 import com.rgbcraft.gastronomod.main.handlers.MiniLiquidHelper;
 import com.rgbcraft.gastronomod.main.items.roba.ItemIndica;
 import com.rgbcraft.gastronomod.main.items.roba.ItemSativa;
@@ -73,6 +76,8 @@ public class Items {
 
 	public static Item emptyCarton, milkCarton, senapeSemi;
 	
+	public static DrinkProxy test;
+	
 	
 	//texture file
 	
@@ -81,6 +86,13 @@ public class Items {
 		
 	public static void InizializzaItem() {
 		
+		
+	try {
+		test = (DrinkProxy) new DrinkProxy(9000-256, 1, 1.5f, false);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
 	//a_CentraleTermica = new Item(24301).setIconIndex(0).setItemName("a_CentraleTermica").setTextureFile("/com/rgbcraft/baumod/textures/cartelli.png").setCreativeTab(CreativeTabs.tabDecorations);
 	// new ItemFood (ID, mezziCosciotti, saturation, preferito_dai_lupi)
