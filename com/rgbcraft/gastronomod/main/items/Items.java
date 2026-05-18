@@ -3,7 +3,9 @@ package com.rgbcraft.gastronomod.main.items;
 import java.lang.reflect.Constructor;
 
 import com.rgbcraft.gastronomod.main.CreativeTab;
+import com.rgbcraft.gastronomod.main.Main;
 import com.rgbcraft.gastronomod.main.agri.AgriBlocks;
+import com.rgbcraft.gastronomod.main.handlers.BadModHandler;
 import com.rgbcraft.gastronomod.main.handlers.DrinkProxy;
 import com.rgbcraft.gastronomod.main.handlers.MiniLiquidHelper;
 import com.rgbcraft.gastronomod.main.items.roba.ItemIndica;
@@ -60,15 +62,12 @@ public class Items {
 	public static Item bogusCibo, suspiciousStew;
 	
 	public static Item arancino_crudo, arancino;
-	
-	
-	public static Item cocacola;
-	
+		
 	public static Item conoVuoto, conoCioccolato, conoPistacchio, conoStracciatella, conoFiordilatte, conoCostoso;
 	public static Item vaschettaVuota, gelatoCioccolato, gelatoPistacchio, gelatoStracciatella, gelatoFiordilatte, gelatoCostoso, cacaoTritato;
 	
 	public static Item senape, mayo, ketchup, rawHamburger, cookedHamburger, cheddar, burger, maxiBurger, cheeseBurger, cheeseBurgerBacon, frittoPesce;
-	public static Item crocche, crocchette, graffa, bomboloneCrema, donut, acquaFrizzante, cola, aranciata, energyDrink, patatineFritte; 
+	public static Item crocche, crocchette, graffa, bomboloneCrema, donut, patatineFritte; 
 	
 	//MARIA
 	public static Item sativaSemi, sativaFoglia, indicaSemi, indicaFoglia;
@@ -76,7 +75,9 @@ public class Items {
 
 	public static Item emptyCarton, milkCarton, senapeSemi;
 	
-	public static DrinkProxy test;
+	public static DrinkProxy drinkCola, drinkSparklingWater, drinkWater;
+	
+	public static Item scrapBottle; 
 	
 	
 	//texture file
@@ -87,12 +88,7 @@ public class Items {
 	public static void InizializzaItem() {
 		
 		
-	try {
-		test = (DrinkProxy) new DrinkProxy(9000-256, 1, 1.5f, false);
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+
 
 	//a_CentraleTermica = new Item(24301).setIconIndex(0).setItemName("a_CentraleTermica").setTextureFile("/com/rgbcraft/baumod/textures/cartelli.png").setCreativeTab(CreativeTabs.tabDecorations);
 	// new ItemFood (ID, mezziCosciotti, saturation, preferito_dai_lupi)
@@ -104,7 +100,7 @@ public class Items {
 		
 		
 		//dolci
-		
+		scrapBottle = new GenericItem(9998, 12, "scrapBottle", CreativeTab.tabGastronomodAltro, 64);
 		
 		
 		//farine
@@ -229,18 +225,8 @@ public class Items {
 		olio_oliva = new Item(10003).setIconIndex(113).setItemName("olio_oliva").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setContainerItem(Items.barattolo_sporco);
 		sugo_pomodoro = new Item(10004).setIconIndex(114).setItemName("sugo_pomodoro").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setContainerItem(Items.barattolo_sporco);
 		
-		cocacola = new ItemBottigliaCocaCola(10005, 3, 1.5f, false).setPotionEffect(3, 60, 10, 100.0f).setIconIndex(192).setItemName("cocacola").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setContainerItem(Items.bottiglia);
-		
-		milkCarton = new ItemMilkCarton(10006, 3, 0.5f, false, 180);
-		emptyCarton = new Item(10007).setIconIndex(181).setItemName("emptyCarton").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
-		
-		//Bugfix (Non so se serve)
 
-		Item milkLiquid = new GenericItem(10007-256, 15, "milkLiquid", null, 64);
-		LanguageRegistry.addName(milkLiquid, "Milk");
-
-		MiniLiquidHelper.registerLiquidContainer("milk", new LiquidStack(milkLiquid, LiquidContainerRegistry.BUCKET_VOLUME), new ItemStack(Items.milkCarton), new ItemStack(Items.emptyCarton));
-		
+	
 		//pesci
 		tonnoPinneGialle = new ItemFood(10150, 4, 1.5f, false).setIconIndex(96).setItemName("tonnoPinneGialle").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodPesca);
 		tonno = new ItemFood(10151, 4, 1.5f, false).setIconIndex(97).setItemName("tonno").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodPesca);
@@ -280,7 +266,55 @@ public class Items {
 		patatineFritte = new ItemFood(10182, 4, 3.5f, false).setIconIndex(63).setItemName("patatineFritte").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
 		senapeSemi = new ItemSeeds(10183, AgriBlocks.BlockSenape.blockID, Block.tilledField.blockID).setIconIndex(132).setItemName("senapeSemi").setCreativeTab(CreativeTab.tabGastronomodAgri).setTextureFile(textureAgri);
 
-	
+		
+		//bibite
+		
+		//cocacola = new ItemBottigliaCocaCola(10005, 3, 1.5f, false).setPotionEffect(3, 60, 10, 100.0f).setIconIndex(192).setItemName("cocacola").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setContainerItem(Items.bottiglia);
+		
+		try {
+			drinkCola = (DrinkProxy) new DrinkProxy(10005, 7, 6.5f, true);
+			drinkCola.setPotionEffect(3, 60, 10, 100.0f);
+			drinkCola.setTexFile(texture);
+			drinkCola.setReturn(scrapBottle);
+			drinkCola.setIconIndex(192);
+			drinkCola.setItemName("drinkCola");			
+		} catch (Exception e) {
+			Main.gastroLog.severe("Errore durante l'aggiunta di una bibita: " + e);
+			e.printStackTrace();
+		}
+		
+		
+		milkCarton = new ItemMilkCarton(10006, 3, 0.5f, false, 180);
+		emptyCarton = new Item(10007).setIconIndex(181).setItemName("emptyCarton").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
+
+		try {
+			drinkWater = (DrinkProxy) new DrinkProxy(10008, 10, 0.5f, true);
+			drinkWater.setTexFile(texture);
+			drinkWater.setReturn(scrapBottle);
+			drinkWater.setIconIndex(193);
+			drinkWater.setItemName("drinkWater");
+		} catch (Exception e) {
+			Main.gastroLog.severe("Errore durante l'aggiunta di una bibita: " + e);
+			e.printStackTrace();
+		}
+		try {
+			drinkSparklingWater = (DrinkProxy) new DrinkProxy(10009, 12, 0.5f, true, 1, "sparklingWater");
+			drinkSparklingWater.setTexFile(texture);
+			drinkSparklingWater.setReturn(scrapBottle);
+			drinkSparklingWater.setIconIndex(194);
+			drinkSparklingWater.setItemName("drinkSparklingWater");
+		} catch (Exception e) {
+			Main.gastroLog.severe("Errore durante l'aggiunta di una bibita: " + e);
+			e.printStackTrace();
+		}
+
+		//Bugfix (Non so se serve)
+
+		Item milkLiquid = new GenericItem(10007-256, 15, "milkLiquid", null, 64);
+		LanguageRegistry.addName(milkLiquid, "Milk");
+
+		MiniLiquidHelper.registerLiquidContainer("milk", new LiquidStack(milkLiquid, LiquidContainerRegistry.BUCKET_VOLUME), new ItemStack(Items.milkCarton), new ItemStack(Items.emptyCarton));
+		
 	}
 	
 	
@@ -288,158 +322,167 @@ public class Items {
 	
 	
 	public static void RegistraLingua() {
-	
-		LanguageRegistry.addName(carbonFishingRod, "Carbon Fiber Fishing Rod");
+		try {
+			LanguageRegistry.addName(carbonFishingRod, "Carbon Fiber Fishing Rod");
+			
+			LanguageRegistry.addName(emptyCarton, "Empty Carton");
+			LanguageRegistry.addName(milkCarton, "Milk Carton");
+			
+			LanguageRegistry.addName(bogusCibo, "Hai trovato un bug grave se hai ottenuto legittimamente questo item. Segnala a lego11.");
+			
+			LanguageRegistry.addName(pentola, "Pentola");
+			LanguageRegistry.addName(pentola_sporca, "Pentola sporca");
+			LanguageRegistry.addName(pentolino, "Pentolino");
+			LanguageRegistry.addName(pentolino_sporco, "Pentolino sporco");
+			LanguageRegistry.addName(piatto, "Piatto");
+			LanguageRegistry.addName(piatto_sporco, "Piatto sporco");
+			LanguageRegistry.addName(barattolo, "Barattolo");
+			LanguageRegistry.addName(barattolo_sporco, "Barattolo sporco");
+			LanguageRegistry.addName(bottiglia, "Bottiglia");
+			
+			LanguageRegistry.addName(pizza_margherita, "Pizza margherita");
+			LanguageRegistry.addName(pizza_marinara, "Pizza marinara");
+			LanguageRegistry.addName(pizza_capricciosa, "Pizza capricciosa");
+			
+			LanguageRegistry.addName(pizza_margherita_nc, "Pizza margherita (cruda)");
+			LanguageRegistry.addName(pizza_marinara_nc, "Pizza marinara (cruda)");
+			LanguageRegistry.addName(pizza_capricciosa_nc, "Pizza capricciosa (cruda)");
+			
+			LanguageRegistry.addName(piatto_spaghetti, "Spaghetti in bianco");
+			LanguageRegistry.addName(piatto_spaghetti_sugo, "Spaghetti al pomodoro");
+			LanguageRegistry.addName(piatto_spaghetti_aglio_olio, "Spaghetti aglio e olio");
+			LanguageRegistry.addName(piatto_ravioli, "Piatto ravioli alla Fabrimat");
+			LanguageRegistry.addName(piatto_riso, "Piatto di riso");
+			
+			LanguageRegistry.addName(base_pizza, "Base per pizza");
+			LanguageRegistry.addName(pentolino_sugo, "Pentolino con sugo di pomodoro");
+			LanguageRegistry.addName(pentolino_sugo_cotto, "Pentolino con sugo di pomodoro cotto");
+			LanguageRegistry.addName(spicchio_aglio, "Spicchio d'aglio");
+			
+			LanguageRegistry.addName(pangrattato, "Pangrattato");
+			LanguageRegistry.addName(arancino, "Arancino");
+			LanguageRegistry.addName(arancino_crudo, "Arancino (crudo)");
+			
+			LanguageRegistry.addName(pentola_acqua, "Pentola con acqua");
+			LanguageRegistry.addName(pentola_bollente, "Pentola con acqua bollente");
+			LanguageRegistry.addName(pentola_spaghetti, "Pentola con acqua bollente e spaghetti");
+			LanguageRegistry.addName(pentola_ravioli, "Pentola con acqua bollente e ravioli");
+			LanguageRegistry.addName(pentola_riso, "Pentola con acqua bollente e riso");
+			
+			LanguageRegistry.addName(aglio, "Aglio");
+			LanguageRegistry.addName(basilico, "Basilico");
+			LanguageRegistry.addName(prezzemolo, "Prezzemolo");
+			LanguageRegistry.addName(pomodoro, "Pomodoro");
+			LanguageRegistry.addName(ariosto, "Spezie");
+			
+			LanguageRegistry.addName(sale, "Sale");
+			LanguageRegistry.addName(olio_oliva, "Olio d'oliva");
+			LanguageRegistry.addName(sugo_pomodoro, "Sugo di pomodoro");
+			
+			LanguageRegistry.addName(riso, "Riso");
+			
+			LanguageRegistry.addName(nutella, "Nutella®");
+			LanguageRegistry.addName(shortbread_nc, "Shortbread crudi");
+			LanguageRegistry.addName(shortbread, "Shortbread (Scozia)");
+			
+			LanguageRegistry.addName(tiramisu, "Tiramisù");
+			LanguageRegistry.addName(cacaoTritato, "Polvere di cacao");
+			
+			LanguageRegistry.addName(conoVuoto, "Cono gelato");
+			LanguageRegistry.addName(conoCioccolato, "Cono gelato cioccolato");
+			//LanguageRegistry.addName(conoPistacchio, "Cono gelato pistacchio");
+			LanguageRegistry.addName(conoStracciatella, "Cono gelato stracciatella");
+			LanguageRegistry.addName(conoFiordilatte, "Cono gelato fiordilatte");
+			LanguageRegistry.addName(conoCostoso, "Cono gelato per ricchi sfondati");
+			
+			LanguageRegistry.addName(cioccolato, "Cioccolato");
+			
+			LanguageRegistry.addName(vaschettaVuota, "Vaschetta vuota");
+			LanguageRegistry.addName(gelatoBase, "Base per gelato");
+			LanguageRegistry.addName(gelatoCioccolato, "Gelato cioccolato");
+			//LanguageRegistry.addName(gelatoPistacchio, "Gelato pistacchio");
+			LanguageRegistry.addName(gelatoStracciatella, "Gelato stracciatella");
+			LanguageRegistry.addName(gelatoFiordilatte, "Gelato fiordilatte");
+			LanguageRegistry.addName(gelatoCostoso, "Gelato per ricchi sfondati");
+			
+			LanguageRegistry.addName(farina_00, "Farina 00");
+			LanguageRegistry.addName(farina_int, "Farina integrale");
+			
+			LanguageRegistry.addName(lievito, "Lievito fresco");
+			
+			LanguageRegistry.addName(spaghetti, "Spaghetti");
+			//LanguageRegistry.addName(ravioli, "Ravioli");
+			LanguageRegistry.addName(pane_nero_nc, "Pane nero crudo");
+			LanguageRegistry.addName(pane_nero, "Pane nero (Alto Adige)");
+			
+			
+			LanguageRegistry.addName(burro, "Burro");
+			LanguageRegistry.addName(parmigiano, "Parmigiano");
+			LanguageRegistry.addName(parmigiano_gratt, "Parmigiano grattuggiato");
+			LanguageRegistry.addName(mozzarella, "Mozzarella");
+			
+			LanguageRegistry.addName(pentola_olio, "Pentola d'olio");
+			LanguageRegistry.addName(pentola_olio_bollente, "Pentola d'olio bollente");
+			
+			//LanguageRegistry.addName(cocacola, "Coca-Cola®");
+					
+			LanguageRegistry.addName(pomodoroSemi, "Semi di pomodoro");
+			LanguageRegistry.addName(basilicoSemi, "Semi di basilico");
+			LanguageRegistry.addName(prezzemoloSemi, "Semi di prezzemolo");
+			LanguageRegistry.addName(carciofoSemi, "Semi di carciofo");
+			LanguageRegistry.addName(carciofo, "Carciofo");
+			
+			LanguageRegistry.addName(indicaSemi, "Semi d'indica");
+			LanguageRegistry.addName(sativaSemi, "Semi di sativa");
+			LanguageRegistry.addName(indicaFoglia, "Foglia d'indica");
+			LanguageRegistry.addName(sativaFoglia, "Foglia di sativa");
+			LanguageRegistry.addName(indicaCannone, "Cannone Indica");
+			LanguageRegistry.addName(sativaCannone, "Cannone Sativa");
+			
+			LanguageRegistry.addName(tonno, "Tonno");
+			LanguageRegistry.addName(tonnoPinneGialle, "Tonno pinne gialle");
+			LanguageRegistry.addName(orata, "Orata");
+			LanguageRegistry.addName(orataCotta, "Orata alla griglia");
+			
+			LanguageRegistry.addName(tonnoScatola, "Tonno in scatola");
+			LanguageRegistry.addName(cornedBeef, "Corned beef (USA)");
+			
+			LanguageRegistry.addName(suspiciousStew, "Suspicious Stew");
+			
+			LanguageRegistry.addName(senape, "Senape");
+			LanguageRegistry.addName(senapeSemi, "Semi di senape");
+			LanguageRegistry.addName(mayo, "Maionese");
+			LanguageRegistry.addName(ketchup, "Ketchup");
+			LanguageRegistry.addName(rawHamburger, "Hamburger crudo");
+			LanguageRegistry.addName(cookedHamburger, "Hamburger cotto");
+			LanguageRegistry.addName(cheddar, "Cheddar");
+			LanguageRegistry.addName(burger, "Burger");
+			LanguageRegistry.addName(maxiBurger, "Maxi Burger");
+			LanguageRegistry.addName(cheeseBurger, "Cheese Burger");
+			LanguageRegistry.addName(cheeseBurgerBacon, "Bacon Cheese Burger");
+			
+			LanguageRegistry.addName(frittoPesce, "Fritto di pesce");
+			LanguageRegistry.addName(crocche, "Crocchè");
+			LanguageRegistry.addName(crocchette, "Crocchette");
+			LanguageRegistry.addName(graffa, "Graffa");
+			LanguageRegistry.addName(bomboloneCrema, "Bombolone alla crema");
+			LanguageRegistry.addName(donut, "Donut");
+			
+			LanguageRegistry.addName(drinkSparklingWater, "Sparkling Water");
+			LanguageRegistry.addName(drinkWater, "Bottled Water");
+			LanguageRegistry.addName(drinkCola, "Cola Drink");
+						
+			LanguageRegistry.addName(scrapBottle, "Scrap PET Bottle");
+			/*
+			LanguageRegistry.addName(aranciata, "Aranciata");
+			LanguageRegistry.addName(energyDrink, "Energy Drink");
+			*/ 
+			LanguageRegistry.addName(patatineFritte, "Patatine Fritte");
+		} catch (Exception e) {
+			Main.gastroLog.severe("Impossibile nominare oggetti: " + e);
+			e.printStackTrace();
+		}
 		
-		LanguageRegistry.addName(emptyCarton, "Empty Carton");
-		LanguageRegistry.addName(milkCarton, "Milk Carton");
-		
-		LanguageRegistry.addName(bogusCibo, "Hai trovato un bug grave se hai ottenuto legittimamente questo item. Segnala a lego11.");
-		
-		LanguageRegistry.addName(pentola, "Pentola");
-		LanguageRegistry.addName(pentola_sporca, "Pentola sporca");
-		LanguageRegistry.addName(pentolino, "Pentolino");
-		LanguageRegistry.addName(pentolino_sporco, "Pentolino sporco");
-		LanguageRegistry.addName(piatto, "Piatto");
-		LanguageRegistry.addName(piatto_sporco, "Piatto sporco");
-		LanguageRegistry.addName(barattolo, "Barattolo");
-		LanguageRegistry.addName(barattolo_sporco, "Barattolo sporco");
-		LanguageRegistry.addName(bottiglia, "Bottiglia");
-		
-		LanguageRegistry.addName(pizza_margherita, "Pizza margherita");
-		LanguageRegistry.addName(pizza_marinara, "Pizza marinara");
-		LanguageRegistry.addName(pizza_capricciosa, "Pizza capricciosa");
-		
-		LanguageRegistry.addName(pizza_margherita_nc, "Pizza margherita (cruda)");
-		LanguageRegistry.addName(pizza_marinara_nc, "Pizza marinara (cruda)");
-		LanguageRegistry.addName(pizza_capricciosa_nc, "Pizza capricciosa (cruda)");
-		
-		LanguageRegistry.addName(piatto_spaghetti, "Spaghetti in bianco");
-		LanguageRegistry.addName(piatto_spaghetti_sugo, "Spaghetti al pomodoro");
-		LanguageRegistry.addName(piatto_spaghetti_aglio_olio, "Spaghetti aglio e olio");
-		LanguageRegistry.addName(piatto_ravioli, "Piatto ravioli alla Fabrimat");
-		LanguageRegistry.addName(piatto_riso, "Piatto di riso");
-		
-		LanguageRegistry.addName(base_pizza, "Base per pizza");
-		LanguageRegistry.addName(pentolino_sugo, "Pentolino con sugo di pomodoro");
-		LanguageRegistry.addName(pentolino_sugo_cotto, "Pentolino con sugo di pomodoro cotto");
-		LanguageRegistry.addName(spicchio_aglio, "Spicchio d'aglio");
-		
-		LanguageRegistry.addName(pangrattato, "Pangrattato");
-		LanguageRegistry.addName(arancino, "Arancino");
-		LanguageRegistry.addName(arancino_crudo, "Arancino (crudo)");
-		
-		LanguageRegistry.addName(pentola_acqua, "Pentola con acqua");
-		LanguageRegistry.addName(pentola_bollente, "Pentola con acqua bollente");
-		LanguageRegistry.addName(pentola_spaghetti, "Pentola con acqua bollente e spaghetti");
-		LanguageRegistry.addName(pentola_ravioli, "Pentola con acqua bollente e ravioli");
-		LanguageRegistry.addName(pentola_riso, "Pentola con acqua bollente e riso");
-		
-		LanguageRegistry.addName(aglio, "Aglio");
-		LanguageRegistry.addName(basilico, "Basilico");
-		LanguageRegistry.addName(prezzemolo, "Prezzemolo");
-		LanguageRegistry.addName(pomodoro, "Pomodoro");
-		LanguageRegistry.addName(ariosto, "Spezie");
-		
-		LanguageRegistry.addName(sale, "Sale");
-		LanguageRegistry.addName(olio_oliva, "Olio d'oliva");
-		LanguageRegistry.addName(sugo_pomodoro, "Sugo di pomodoro");
-		
-		LanguageRegistry.addName(riso, "Riso");
-		
-		LanguageRegistry.addName(nutella, "Nutella®");
-		LanguageRegistry.addName(shortbread_nc, "Shortbread crudi");
-		LanguageRegistry.addName(shortbread, "Shortbread (Scozia)");
-		
-		LanguageRegistry.addName(tiramisu, "Tiramisù");
-		LanguageRegistry.addName(cacaoTritato, "Polvere di cacao");
-		
-		LanguageRegistry.addName(conoVuoto, "Cono gelato");
-		LanguageRegistry.addName(conoCioccolato, "Cono gelato cioccolato");
-		//LanguageRegistry.addName(conoPistacchio, "Cono gelato pistacchio");
-		LanguageRegistry.addName(conoStracciatella, "Cono gelato stracciatella");
-		LanguageRegistry.addName(conoFiordilatte, "Cono gelato fiordilatte");
-		LanguageRegistry.addName(conoCostoso, "Cono gelato per ricchi sfondati");
-		
-		LanguageRegistry.addName(cioccolato, "Cioccolato");
-		
-		LanguageRegistry.addName(vaschettaVuota, "Vaschetta vuota");
-		LanguageRegistry.addName(gelatoBase, "Base per gelato");
-		LanguageRegistry.addName(gelatoCioccolato, "Gelato cioccolato");
-		//LanguageRegistry.addName(gelatoPistacchio, "Gelato pistacchio");
-		LanguageRegistry.addName(gelatoStracciatella, "Gelato stracciatella");
-		LanguageRegistry.addName(gelatoFiordilatte, "Gelato fiordilatte");
-		LanguageRegistry.addName(gelatoCostoso, "Gelato per ricchi sfondati");
-		
-		LanguageRegistry.addName(farina_00, "Farina 00");
-		LanguageRegistry.addName(farina_int, "Farina integrale");
-		
-		LanguageRegistry.addName(lievito, "Lievito fresco");
-		
-		LanguageRegistry.addName(spaghetti, "Spaghetti");
-		//LanguageRegistry.addName(ravioli, "Ravioli");
-		LanguageRegistry.addName(pane_nero_nc, "Pane nero crudo");
-		LanguageRegistry.addName(pane_nero, "Pane nero (Alto Adige)");
-		
-		
-		LanguageRegistry.addName(burro, "Burro");
-		LanguageRegistry.addName(parmigiano, "Parmigiano");
-		LanguageRegistry.addName(parmigiano_gratt, "Parmigiano grattuggiato");
-		LanguageRegistry.addName(mozzarella, "Mozzarella");
-		
-		LanguageRegistry.addName(pentola_olio, "Pentola d'olio");
-		LanguageRegistry.addName(pentola_olio_bollente, "Pentola d'olio bollente");
-		
-		LanguageRegistry.addName(cocacola, "Coca-Cola®");
-				
-		LanguageRegistry.addName(pomodoroSemi, "Semi di pomodoro");
-		LanguageRegistry.addName(basilicoSemi, "Semi di basilico");
-		LanguageRegistry.addName(prezzemoloSemi, "Semi di prezzemolo");
-		LanguageRegistry.addName(carciofoSemi, "Semi di carciofo");
-		LanguageRegistry.addName(carciofo, "Carciofo");
-		
-		LanguageRegistry.addName(indicaSemi, "Semi d'indica");
-		LanguageRegistry.addName(sativaSemi, "Semi di sativa");
-		LanguageRegistry.addName(indicaFoglia, "Foglia d'indica");
-		LanguageRegistry.addName(sativaFoglia, "Foglia di sativa");
-		LanguageRegistry.addName(indicaCannone, "Cannone Indica");
-		LanguageRegistry.addName(sativaCannone, "Cannone Sativa");
-		
-		LanguageRegistry.addName(tonno, "Tonno");
-		LanguageRegistry.addName(tonnoPinneGialle, "Tonno pinne gialle");
-		LanguageRegistry.addName(orata, "Orata");
-		LanguageRegistry.addName(orataCotta, "Orata alla griglia");
-		
-		LanguageRegistry.addName(tonnoScatola, "Tonno in scatola");
-		LanguageRegistry.addName(cornedBeef, "Corned beef (USA)");
-		
-		LanguageRegistry.addName(suspiciousStew, "Suspicious Stew");
-		
-		LanguageRegistry.addName(senape, "Senape");
-		LanguageRegistry.addName(senapeSemi, "Semi di senape");
-		LanguageRegistry.addName(mayo, "Maionese");
-		LanguageRegistry.addName(ketchup, "Ketchup");
-		LanguageRegistry.addName(rawHamburger, "Hamburger crudo");
-		LanguageRegistry.addName(cookedHamburger, "Hamburger cotto");
-		LanguageRegistry.addName(cheddar, "Cheddar");
-		LanguageRegistry.addName(burger, "Burger");
-		LanguageRegistry.addName(maxiBurger, "Maxi Burger");
-		LanguageRegistry.addName(cheeseBurger, "Cheese Burger");
-		LanguageRegistry.addName(cheeseBurgerBacon, "Bacon Cheese Burger");
-		
-		LanguageRegistry.addName(frittoPesce, "Fritto di pesce");
-		LanguageRegistry.addName(crocche, "Crocchè");
-		LanguageRegistry.addName(crocchette, "Crocchette");
-		LanguageRegistry.addName(graffa, "Graffa");
-		LanguageRegistry.addName(bomboloneCrema, "Bombolone alla crema");
-		LanguageRegistry.addName(donut, "Donut");
-		/*
-		LanguageRegistry.addName(acquaFrizzante, "Acqua frizzante");
-		LanguageRegistry.addName(cola, "Cola");
-		LanguageRegistry.addName(aranciata, "Aranciata");
-		LanguageRegistry.addName(energyDrink, "Energy Drink");
-		*/
-		LanguageRegistry.addName(patatineFritte, "Patatine Fritte");
 	}
 }
 

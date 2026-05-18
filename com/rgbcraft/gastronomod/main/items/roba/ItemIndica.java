@@ -2,6 +2,7 @@ package com.rgbcraft.gastronomod.main.items.roba;
 
 import java.util.Random;
 
+import com.rgbcraft.gastronomod.main.Main;
 import com.rgbcraft.gastronomod.main.items.Items;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -64,7 +65,7 @@ public class ItemIndica extends ItemFood{
 			}
 			
 			
-			System.out.println(par3EntityPlayer.username + " è un tossicodipendente");
+			Main.gastroLog.info(par3EntityPlayer.username + " è un tossicodipendente");
 		}
 		return ic2.api.Items.getItem("scrap");
     }

@@ -1,5 +1,7 @@
 package com.rgbcraft.gastronomod.main.proxies;
 
+import com.rgbcraft.gastronomod.main.Main;
+
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -30,7 +32,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.preloadTexture("/com/rgbcraft/gastronomod/textures/agri.png");
 		MinecraftForgeClient.preloadTexture("/com/rgbcraft/gastronomod/textures/items.png");
 		MinecraftForgeClient.preloadTexture("/com/rgbcraft/gastronomod/textures/flori.png");
-	    System.out.println("[Gastronomod] Preloading texture completato");
+	    Main.gastroLog.info("Preload texture completato");
 
 	}
 

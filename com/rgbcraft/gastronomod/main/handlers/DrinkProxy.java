@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 
 import java.lang.reflect.Field;
 
-public class DrinkProxy {
+public class DrinkProxy extends Item {
     private final Object drinkInstance;
     private static Class<?> drinkClass;
 
@@ -20,12 +20,14 @@ public class DrinkProxy {
     }
 
     public DrinkProxy(int id, int replenish, float saturation, boolean alwaysDrinkable) throws Exception {
+    	super(id);
         Constructor<?> constructor = drinkClass.getConstructor(int.class, int.class, float.class, boolean.class);
         this.drinkInstance = constructor.newInstance(id, replenish, saturation, alwaysDrinkable);
     }
 
     public DrinkProxy(int id, int replenish, float saturation, boolean alwaysDrinkable, int storeRecipe, String name) throws Exception {
-        Constructor<?> constructor = drinkClass.getConstructor(int.class, int.class, float.class, boolean.class, int.class, String.class);
+    	super(id);
+    	Constructor<?> constructor = drinkClass.getConstructor(int.class, int.class, float.class, boolean.class, int.class, String.class);
         this.drinkInstance = constructor.newInstance(id, replenish, saturation, alwaysDrinkable, storeRecipe, name);
     }
 
@@ -96,17 +98,32 @@ public class DrinkProxy {
         Method method = drinkClass.getMethod("setReturn", Item.class);
         return method.invoke(this.drinkInstance, item);
     }
+    
+    public Item setIconIndex(int iconIndex) {
+    	try {
+    	Method method = Item.class.getDeclaredMethod("setIconIndex", int.class);
+        return (Item) method.invoke(this.drinkInstance, iconIndex);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		return null;
+    	}
+    }
 
     public Object setTexFile(String tex) throws Exception {
         Method method = drinkClass.getMethod("setTexFile", String.class);
         return method.invoke(this.drinkInstance, tex);
     }
-
-    public String getTextureFile() throws Exception {
-        Method method = drinkClass.getMethod("getTextureFile");
-        return (String) method.invoke(this.drinkInstance);
+/*
+    public String getTextureFile() {
+    	try {
+    		Method method = drinkClass.getMethod("getTextureFile");
+    		return (String) method.invoke(this.drinkInstance);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		return null;
+    	}
     }
-
+*/
     public Object getReturn() throws Exception {
         Method method = drinkClass.getMethod("getReturn");
         return method.invoke(this.drinkInstance);

@@ -1,5 +1,6 @@
 package com.rgbcraft.gastronomod.main.handlers;
 
+import com.rgbcraft.gastronomod.main.Main;
 import com.rgbcraft.gastronomod.main.agri.AgriBlocks;
 import com.rgbcraft.gastronomod.main.items.Items;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -34,19 +35,18 @@ public class CraftingHandler {
 		
 		//GELATO
 
-		GameRegistry.addShapedRecipe(new ItemStack(Items.vaschettaVuota), new Object[] { "   ", "# #", "###", '#', Item.paper});
 		GameRegistry.addShapedRecipe(new ItemStack(Items.gelatoCostoso), new Object[] { "#M#", "#M#", " G ", '#', Item.netherStar, 'M', Item.bucketMilk, 'G', Item.ingotGold});
 		GameRegistry.addShapedRecipe(new ItemStack(Items.gelatoCostoso), new Object[] { "#M#", "#M#", " G ", '#', Item.netherStar, 'M', Items.milkCarton, 'G', Item.ingotGold});
 
-		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.gelatoCostoso), new ItemStack(Items.conoCostoso), 1400);
-		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.milkCarton), new ItemStack(Items.gelatoBase), 400);
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoCioccolato), new Object[] {new ItemStack(Items.gelatoBase), new ItemStack(Items.cioccolato)});
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoStracciatella), new Object[] {new ItemStack(Item.bucketMilk), new ItemStack(Items.gelatoBase), new ItemStack(Items.cioccolato)});
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoFiordilatte), new Object[] {new ItemStack(Item.bucketMilk), new ItemStack(Items.gelatoBase)});
+		GregtechCompat.addVacuumFreezerRecipe(new ItemStack(Items.gelatoCostoso), new ItemStack(Items.conoCostoso), 1400);
+		GregtechCompat.addVacuumFreezerRecipe(new ItemStack(Items.milkCarton), new ItemStack(Items.gelatoBase), 400);
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoCioccolato), new Object[] {new ItemStack(Items.vaschettaVuota), new ItemStack(Items.gelatoBase), new ItemStack(Items.cioccolato)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoStracciatella), new Object[] {new ItemStack(Items.vaschettaVuota), new ItemStack(Item.bucketMilk), new ItemStack(Items.gelatoBase), new ItemStack(Items.cioccolato)});
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.gelatoFiordilatte), new Object[] {new ItemStack(Items.vaschettaVuota), new ItemStack(Item.bucketMilk), new ItemStack(Items.gelatoBase)});
 
-		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.gelatoCioccolato), new ItemStack(Items.conoCioccolato), 60);
-		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.gelatoStracciatella), new ItemStack(Items.conoStracciatella), 60);
-		GregtechHandler.addVacuumFreezerRecipe(new ItemStack(Items.gelatoFiordilatte), new ItemStack(Items.conoFiordilatte), 60);
+		GregtechCompat.addVacuumFreezerRecipe(new ItemStack(Items.gelatoCioccolato), new ItemStack(Items.conoCioccolato), 60);
+		GregtechCompat.addVacuumFreezerRecipe(new ItemStack(Items.gelatoStracciatella), new ItemStack(Items.conoStracciatella), 60);
+		GregtechCompat.addVacuumFreezerRecipe(new ItemStack(Items.gelatoFiordilatte), new ItemStack(Items.conoFiordilatte), 60);
 
 
 		ic2.api.Ic2Recipes.addMaceratorRecipe(new ItemStack(Item.dyePowder, 1, 3), new ItemStack(Items.cacaoTritato));
@@ -116,7 +116,7 @@ public class CraftingHandler {
 		ItemStack sixCells = ic2.api.Items.getItem("cell").copy();
 		sixCells.stackSize = 6;
 
-		GregtechHandler.addCannerRecipe(new ItemStack(Items.pentola), GregtechHandler.getGregTechItem(2, 6, 24), new ItemStack(Items.pentola_olio, 1), sixCells, 40, 1); 
+		GregtechCompat.addCannerRecipe(new ItemStack(Items.pentola), GregtechCompat.getGregTechItem(2, 6, 24), new ItemStack(Items.pentola_olio, 1), sixCells, 40, 1); 
 
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.pentola_olio, 1), new Object [] {new ItemStack(Items.pentola), new ItemStack(Items.olio_oliva)});
 		GameRegistry.addSmelting(Items.pentola_olio.itemID, new ItemStack(Items.pentola_olio_bollente), 0.15f);
@@ -128,7 +128,7 @@ public class CraftingHandler {
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.arancino), new Object[] {new ItemStack(Items.pentola_olio_bollente), new ItemStack(Items.arancino_crudo)});
 		GameRegistry.addRecipe(new ItemStack(Items.arancino, 8), new Object [] { "###", "###", "#P#", '#', Items.arancino_crudo, 'P', Items.pentola_olio_bollente});
 
-		GregtechHandler.addCannerRecipe(new ItemStack(Items.arancino_crudo, 64), new ItemStack(Items.pentola_olio_bollente, 1), new ItemStack(Items.arancino, 64), new ItemStack(Items.pentola_sporca), 400, 24);
+		GregtechCompat.addCannerRecipe(new ItemStack(Items.arancino_crudo, 64), new ItemStack(Items.pentola_olio_bollente, 1), new ItemStack(Items.arancino, 64), new ItemStack(Items.pentola_sporca), 400, 24);
 
 
 		//pizza
@@ -150,21 +150,55 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(Items.pentola, 1), new Object[] { " # ", "# #", "###", '#', Item.ingotIron});
 		GameRegistry.addRecipe(new ItemStack(Items.piatto, 1), new Object[] { "   ", "# #", "###", '#', Item.clay});
 		GameRegistry.addRecipe(new ItemStack(Items.barattolo, 1), new Object[] { " X ", "# #", "###", '#', Block.glass, 'X', Block.planks});
-		GameRegistry.addRecipe(new ItemStack(Items.bottiglia, 1), new Object[] { " X ", " # ", " # ", '#', Block.glass, 'X', Block.planks});
 
+		//bottiglia da PET
+		ItemStack pet = CraftingHelpers.getOreDict("polymer_pet_sheet");
+		if (pet != null) {
+			pet.stackSize = 6;
+			GregtechCompat.addBenderRecipe(pet, new ItemStack(Items.bottiglia, 1), 160, 70);
+		} else {
+			Main.gastroLog.warning("Impossibile trovare PET, abilitate ricette alternative per bottiglie");
+			GameRegistry.addRecipe(new ItemStack(Items.bottiglia, 1), new Object[] { " X ", " # ", " # ", '#', Block.glass, 'X', Block.planks});
+		}
+		
+		//vaschette gelato polistirene
+		ItemStack ps = CraftingHelpers.getOreDict("polymer_ps_sheet");
+		if (ps != null) {
+			ps.stackSize = 4;
+			GregtechCompat.addBenderRecipe(ps, new ItemStack(Items.vaschettaVuota, 1), 160, 70);
+		} else {
+			Main.gastroLog.warning("Impossibile trovare Polistirene, abilitate ricette alternative per vaschette gelato");
+			GameRegistry.addShapedRecipe(new ItemStack(Items.vaschettaVuota), new Object[] { "   ", "# #", "###", '#', Item.paper});
+		}
+		
+		//acqua
+		ItemStack freshWater = new ItemStack(BadModHandler.universalItemGetter("item.freshWater"));
+		ItemStack bottledWater = new ItemStack(Items.drinkWater);
+		ItemStack bottiglia = new ItemStack(Items.bottiglia);
+		GregtechCompat.addCannerRecipe(freshWater, bottiglia, bottledWater, null, 10, 2);
+		
+		ItemStack co2 = CraftingHelpers.getOreDict("Carbon Dioxide Cell");
+		ItemStack sparklingWater = new ItemStack(Items.drinkSparklingWater);
+		if (co2 != null) {
+			GregtechCompat.addCannerRecipe(bottledWater, co2, sparklingWater, null, 10, 2);
+		} else {
+			Main.gastroLog.warning("Impossibile trovare CO2, disabilitata acqua gasata");
+		}
+		
 
 		//cocacola
-
-		GameRegistry.addRecipe(new ItemStack(Items.cocacola, 1), new Object[] {"WCW", "WZW", "WBA", 'A', new ItemStack(Item.dyePowder, 1, 3), 'W', Item.bucketWater, 'Z', Item.sugar, 'C', ic2.api.Items.getItem("scrap"), 'B', Items.bottiglia });
+		
+		
+		//GameRegistry.addRecipe(new ItemStack(Items.drinkCola, 1), new Object[] {"WCW", "WZW", "WBA", 'A', new ItemStack(Item.dyePowder, 1, 3), 'W', Item.bucketWater, 'Z', Item.sugar, 'C', ic2.api.Items.getItem("scrap"), 'B', Items.bottiglia });
 
 		//pesci
 
 		GameRegistry.addSmelting(Items.orata.itemID, new ItemStack(Items.orataCotta), 0.15f);
-		GregtechHandler.addCannerRecipe(new ItemStack(Items.tonno, 1), GregtechHandler.getGregTechItem(2, 1, 24), new ItemStack(Items.tonnoScatola, 4), null, 200, 3);
-		GregtechHandler.addCannerRecipe(new ItemStack(Items.tonnoPinneGialle, 1), GregtechHandler.getGregTechItem(2, 1, 24), new ItemStack(Items.tonnoScatola, 6), null, 250, 3);
+		GregtechCompat.addCannerRecipe(new ItemStack(Items.tonno, 1), GregtechCompat.getGregTechItem(2, 1, 24), new ItemStack(Items.tonnoScatola, 4), null, 200, 3);
+		GregtechCompat.addCannerRecipe(new ItemStack(Items.tonnoPinneGialle, 1), GregtechCompat.getGregTechItem(2, 1, 24), new ItemStack(Items.tonnoScatola, 6), null, 250, 3);
 
 		//corned beef
-		GregtechHandler.addCannerRecipe(new ItemStack(Item.beefCooked, 1), new ItemStack(Items.sale, 1), new ItemStack(Items.cornedBeef, 4), null, 200, 5);
+		GregtechCompat.addCannerRecipe(new ItemStack(Item.beefCooked, 1), new ItemStack(Items.sale, 1), new ItemStack(Items.cornedBeef, 4), null, 200, 5);
 
 		ItemStack carbonFibre = ic2.api.Items.getItem("carbonFiber").copy();
 		ItemStack carbonPlate = ic2.api.Items.getItem("carbonPlate").copy();
@@ -277,8 +311,8 @@ public class CraftingHandler {
 		ic2.api.Ic2Recipes.addMaceratorRecipe(new ItemStack(Items.senapeSemi), new ItemStack(Items.senape));
 		
 		
-		GregtechHandler.addCentrifugeRecipe(new ItemStack(Item.egg, 4), 1, new ItemStack(Items.mayo, 1), null, null, null, 60);
-		GregtechHandler.addCentrifugeRecipe(new ItemStack(Items.pomodoro, 4), 1, new ItemStack(Items.ketchup, 1), null, null, null, 60);
+		GregtechCompat.addCentrifugeRecipe(new ItemStack(Item.egg, 4), 1, new ItemStack(Items.mayo, 1), null, null, null, 60);
+		GregtechCompat.addCentrifugeRecipe(new ItemStack(Items.pomodoro, 4), 1, new ItemStack(Items.ketchup, 1), null, null, null, 60);
 		
 		ic2.api.Ic2Recipes.addMaceratorRecipe(new ItemStack(Item.beefRaw), new ItemStack(Items.rawHamburger));
 		GameRegistry.addSmelting(Items.rawHamburger.itemID, new ItemStack(Items.cookedHamburger), 0.2f);

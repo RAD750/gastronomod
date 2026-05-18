@@ -1,5 +1,7 @@
 package com.rgbcraft.gastronomod.main;
 
+import java.util.logging.Logger;
+
 import com.rgbcraft.gastronomod.main.agri.AgriBlocks;
 import com.rgbcraft.gastronomod.main.arbori.ArboriBlocks;
 import com.rgbcraft.gastronomod.main.handlers.CraftingHandler;
@@ -25,16 +27,16 @@ import net.minecraft.src.BaseMod;
 import net.minecraftforge.common.MinecraftForge;
 
 
-@Mod(name="Gastronomod", version="1.13", modid="gastronomod", dependencies="required-after:IC2; after:CustomSpawner; required-after:CampCraft; after:Forestry; after:minefactoryreloaded; after:ThirstMod")
+@Mod(name="Gastronomod", version="1.14", modid="gastronomod", dependencies="required-after:IC2; after:CustomSpawner; required-after:CampCraft; after:Forestry; after:minefactoryreloaded; required-after:ThirstMod; after:oilgasoverhaul")
 public class Main extends BaseMod{
 
 	//proxy per prerendering
 	  @SidedProxy(clientSide="com.rgbcraft.gastronomod.main.proxies.ClientProxy", serverSide="com.rgbcraft.gastronomod.main.proxies.ServerProxy")
 	  public static CommonProxy proxy;
-	
+	  public static Logger gastroLog = Logger.getLogger("gastronomod");
 	@Override
 	public String getVersion() {
-		return "1.13";
+		return "1.14";
 	}
 
 	@Override
@@ -45,7 +47,7 @@ public class Main extends BaseMod{
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
-		System.out.println("[Gastronomod] VIVA L'ATR125 - UNICO TRENO MODERNO COI FINESTRINI ALLINEATI AI SEDILI");		
+		gastroLog.info("VIVA L'ATR125 - UNICO TRENO MODERNO COI FINESTRINI ALLINEATI AI SEDILI");		
 	}
 	
 	
