@@ -27,7 +27,7 @@ import net.minecraft.src.BaseMod;
 import net.minecraftforge.common.MinecraftForge;
 
 
-@Mod(name="Gastronomod", version="1.14", modid="gastronomod", dependencies="required-after:IC2; after:CustomSpawner; required-after:CampCraft; after:Forestry; after:minefactoryreloaded; required-after:ThirstMod; after:oilgasoverhaul")
+@Mod(name="Gastronomod", version="1.15", modid="gastronomod", dependencies="required-after:IC2; after:CustomSpawner; required-after:CampCraft; after:Forestry; after:minefactoryreloaded; required-after:ThirstMod; after:oilgasoverhaul")
 public class Main extends BaseMod{
 
 	//proxy per prerendering

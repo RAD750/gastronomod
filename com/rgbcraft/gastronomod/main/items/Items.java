@@ -6,7 +6,6 @@ import com.rgbcraft.gastronomod.main.CreativeTab;
 import com.rgbcraft.gastronomod.main.Main;
 import com.rgbcraft.gastronomod.main.agri.AgriBlocks;
 import com.rgbcraft.gastronomod.main.handlers.BadModHandler;
-import com.rgbcraft.gastronomod.main.handlers.DrinkProxy;
 import com.rgbcraft.gastronomod.main.handlers.MiniLiquidHelper;
 import com.rgbcraft.gastronomod.main.items.roba.ItemIndica;
 import com.rgbcraft.gastronomod.main.items.roba.ItemSativa;
@@ -33,7 +32,6 @@ public class Items {
 	//pentolame
 	public static Item pentola, pentola_sporca, pentola_acqua, pentola_bollente, pentola_spaghetti, pentola_riso, pentola_olio, pentola_olio_bollente;
 	public static Item pentolino, pentolino_sporco, pentolino_sugo, pentolino_sugo_cotto;
-	public static Item bottiglia;
 	
 	//piatti
 	public static Item piatto, piatto_sporco, piatto_spaghetti, piatto_spaghetti_aglio_olio, piatto_spaghetti_sugo, piatto_ravioli, pentola_ravioli, piatto_riso;
@@ -74,11 +72,7 @@ public class Items {
 	public static Item sativaCannone, indicaCannone;
 
 	public static Item emptyCarton, milkCarton, senapeSemi;
-	
-	public static DrinkProxy drinkCola, drinkSparklingWater, drinkWater;
-	
-	public static Item scrapBottle; 
-	
+		
 	
 	//texture file
 	
@@ -98,10 +92,7 @@ public class Items {
 		
 		carbonFishingRod = new ItemCarbonFishingRod(9999);
 		
-		
-		//dolci
-		scrapBottle = new GenericItem(9998, 12, "scrapBottle", CreativeTab.tabGastronomodAltro, 64);
-		
+				
 		
 		//farine
 		farina_int = new GenericItem(10010, 145, "farina_int", CreativeTab.tabGastronomodCibi, 64);
@@ -140,7 +131,6 @@ public class Items {
 	    piatto_sporco = new GenericItem(10045, 5, "piatto_sporco", CreativeTab.tabGastronomodAltro, 16);
 	    barattolo = new GenericItem(10046, 6, "barattolo", CreativeTab.tabGastronomodAltro, 4);
 	    barattolo_sporco = new GenericItem(10047, 7, "barattolo_sporco", CreativeTab.tabGastronomodAltro, 4);
-	    bottiglia = new GenericItem(10048, 8, "bottiglia)", CreativeTab.tabGastronomodAltro, 6);
 		
 	    mozzarella = new ItemFood(10050, 6, 1.0f, false).setItemName("mozzarella").setIconIndex(179).setCreativeTab(CreativeTab.tabGastronomodCibi).setTextureFile(texture).setMaxStackSize(8);
 	    parmigiano = new ItemFood(10051, 4, 1.0f, false).setItemName("parmigiano").setIconIndex(177).setCreativeTab(CreativeTab.tabGastronomodCibi).setTextureFile(texture).setMaxStackSize(8);
@@ -266,48 +256,8 @@ public class Items {
 		patatineFritte = new ItemFood(10182, 4, 3.5f, false).setIconIndex(63).setItemName("patatineFritte").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
 		senapeSemi = new ItemSeeds(10183, AgriBlocks.BlockSenape.blockID, Block.tilledField.blockID).setIconIndex(132).setItemName("senapeSemi").setCreativeTab(CreativeTab.tabGastronomodAgri).setTextureFile(textureAgri);
 
-		
-		//bibite
-		
-		//cocacola = new ItemBottigliaCocaCola(10005, 3, 1.5f, false).setPotionEffect(3, 60, 10, 100.0f).setIconIndex(192).setItemName("cocacola").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi).setContainerItem(Items.bottiglia);
-		
-		try {
-			drinkCola = (DrinkProxy) new DrinkProxy(10005, 7, 6.5f, true);
-			drinkCola.setPotionEffect(3, 60, 10, 100.0f);
-			drinkCola.setTexFile(texture);
-			drinkCola.setReturn(scrapBottle);
-			drinkCola.setIconIndex(192);
-			drinkCola.setItemName("drinkCola");			
-		} catch (Exception e) {
-			Main.gastroLog.severe("Errore durante l'aggiunta di una bibita: " + e);
-			e.printStackTrace();
-		}
-		
-		
 		milkCarton = new ItemMilkCarton(10006, 3, 0.5f, false, 180);
 		emptyCarton = new Item(10007).setIconIndex(181).setItemName("emptyCarton").setTextureFile(texture).setCreativeTab(CreativeTab.tabGastronomodCibi);
-
-		try {
-			drinkWater = (DrinkProxy) new DrinkProxy(10008, 10, 0.5f, true);
-			drinkWater.setTexFile(texture);
-			drinkWater.setReturn(scrapBottle);
-			drinkWater.setIconIndex(193);
-			drinkWater.setItemName("drinkWater");
-		} catch (Exception e) {
-			Main.gastroLog.severe("Errore durante l'aggiunta di una bibita: " + e);
-			e.printStackTrace();
-		}
-		try {
-			drinkSparklingWater = (DrinkProxy) new DrinkProxy(10009, 12, 0.5f, true, 1, "sparklingWater");
-			drinkSparklingWater.setTexFile(texture);
-			drinkSparklingWater.setReturn(scrapBottle);
-			drinkSparklingWater.setIconIndex(194);
-			drinkSparklingWater.setItemName("drinkSparklingWater");
-		} catch (Exception e) {
-			Main.gastroLog.severe("Errore durante l'aggiunta di una bibita: " + e);
-			e.printStackTrace();
-		}
-
 		//Bugfix (Non so se serve)
 
 		Item milkLiquid = new GenericItem(10007-256, 15, "milkLiquid", null, 64);
@@ -338,7 +288,6 @@ public class Items {
 			LanguageRegistry.addName(piatto_sporco, "Piatto sporco");
 			LanguageRegistry.addName(barattolo, "Barattolo");
 			LanguageRegistry.addName(barattolo_sporco, "Barattolo sporco");
-			LanguageRegistry.addName(bottiglia, "Bottiglia");
 			
 			LanguageRegistry.addName(pizza_margherita, "Pizza margherita");
 			LanguageRegistry.addName(pizza_marinara, "Pizza marinara");
@@ -468,15 +417,6 @@ public class Items {
 			LanguageRegistry.addName(bomboloneCrema, "Bombolone alla crema");
 			LanguageRegistry.addName(donut, "Donut");
 			
-			LanguageRegistry.addName(drinkSparklingWater, "Sparkling Water");
-			LanguageRegistry.addName(drinkWater, "Bottled Water");
-			LanguageRegistry.addName(drinkCola, "Cola Drink");
-						
-			LanguageRegistry.addName(scrapBottle, "Scrap PET Bottle");
-			/*
-			LanguageRegistry.addName(aranciata, "Aranciata");
-			LanguageRegistry.addName(energyDrink, "Energy Drink");
-			*/ 
 			LanguageRegistry.addName(patatineFritte, "Patatine Fritte");
 		} catch (Exception e) {
 			Main.gastroLog.severe("Impossibile nominare oggetti: " + e);

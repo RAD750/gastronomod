@@ -151,15 +151,7 @@ public class CraftingHandler {
 		GameRegistry.addRecipe(new ItemStack(Items.piatto, 1), new Object[] { "   ", "# #", "###", '#', Item.clay});
 		GameRegistry.addRecipe(new ItemStack(Items.barattolo, 1), new Object[] { " X ", "# #", "###", '#', Block.glass, 'X', Block.planks});
 
-		//bottiglia da PET
-		ItemStack pet = CraftingHelpers.getOreDict("polymer_pet_sheet");
-		if (pet != null) {
-			pet.stackSize = 6;
-			GregtechCompat.addBenderRecipe(pet, new ItemStack(Items.bottiglia, 1), 160, 70);
-		} else {
-			Main.gastroLog.warning("Impossibile trovare PET, abilitate ricette alternative per bottiglie");
-			GameRegistry.addRecipe(new ItemStack(Items.bottiglia, 1), new Object[] { " X ", " # ", " # ", '#', Block.glass, 'X', Block.planks});
-		}
+
 		
 		//vaschette gelato polistirene
 		ItemStack ps = CraftingHelpers.getOreDict("polymer_ps_sheet");
@@ -171,25 +163,6 @@ public class CraftingHandler {
 			GameRegistry.addShapedRecipe(new ItemStack(Items.vaschettaVuota), new Object[] { "   ", "# #", "###", '#', Item.paper});
 		}
 		
-		//acqua
-		ItemStack freshWater = new ItemStack(BadModHandler.universalItemGetter("item.freshWater"));
-		ItemStack bottledWater = new ItemStack(Items.drinkWater);
-		ItemStack bottiglia = new ItemStack(Items.bottiglia);
-		GregtechCompat.addCannerRecipe(freshWater, bottiglia, bottledWater, null, 10, 2);
-		
-		ItemStack co2 = CraftingHelpers.getOreDict("Carbon Dioxide Cell");
-		ItemStack sparklingWater = new ItemStack(Items.drinkSparklingWater);
-		if (co2 != null) {
-			GregtechCompat.addCannerRecipe(bottledWater, co2, sparklingWater, null, 10, 2);
-		} else {
-			Main.gastroLog.warning("Impossibile trovare CO2, disabilitata acqua gasata");
-		}
-		
-
-		//cocacola
-		
-		
-		//GameRegistry.addRecipe(new ItemStack(Items.drinkCola, 1), new Object[] {"WCW", "WZW", "WBA", 'A', new ItemStack(Item.dyePowder, 1, 3), 'W', Item.bucketWater, 'Z', Item.sugar, 'C', ic2.api.Items.getItem("scrap"), 'B', Items.bottiglia });
 
 		//pesci
 
